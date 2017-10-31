@@ -5,3 +5,5 @@ pip-selfcheck.json
 .DS_Store
 .Python
 .idea
+db.sqlite3
+__pycache__
