@@ -1,0 +1,12 @@
+{% load staticfiles compress %}
+<html>
+    <head>
+        <title>Motty - Modern web tools that create fake responses.</title>
+        {% compress css %}
+            <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
+        {% endcompress %}
+    </head>
+    <body>
+        Hello, World
+    </body>
+</html>
