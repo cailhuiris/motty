@@ -3,6 +3,7 @@
     <head>
         <title>Motty - Modern web tools that create fake responses.</title>
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap-grid.min.css' %}" />
         {% compress css %}
             <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
         {% endcompress %}
@@ -11,6 +12,54 @@
         <script type="text/javascript" src="{% static '/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
     </head>
     <body>
-        Hello, World
+        <header>
+            <div class="container">
+                <img src="{% static '/images/motty.png' %}" id="logo" title="logo" />
+            </div>
+        </header>
+        <div id="body" class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="tools">
+                        <div id="new-button">
+                            <a href="#"><img src="{% static '/images/add.png' %} " title="new response" /></a>
+                            <h4>New Response</h4>
+                        </div>
+                        <div id="total-responses">Total Responses: 0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div id="responses">
+                        <div class="response-item">
+                            <span class="method-label-get">GET</span>
+                            <h4>User List</h4>
+                            <span class="url">/users</span>
+                        </div>
+                        <div class="response-item">
+                            <span class="method-label-get">GET</span>
+                            <h4>User List</h4>
+                            <span class="url">/users</span>
+                        </div>
+                        <div class="response-item">
+                            <span class="method-label-get">GET</span>
+                            <h4>User List</h4>
+                            <span class="url">/users</span>
+                        </div>
+                        <div class="response-item">
+                            <span class="method-label-get">GET</span>
+                            <h4>User List</h4>
+                            <span class="url">/users</span>
+                        </div>
+                        <div class="response-item">
+                            <span class="method-label-get">GET</span>
+                            <h4>User List</h4>
+                            <span class="url">/users</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

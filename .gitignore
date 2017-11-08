@@ -1,6 +1,4 @@
-bin/
-include/
-lib/
+venv
 pip-selfcheck.json
 .DS_Store
 .Python
