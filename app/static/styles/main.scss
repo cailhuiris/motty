@@ -3,17 +3,17 @@ $background-color: #F3F5F8;
 $header-color: #fff;
 $default-text-color: #4D5561;
 
-$label-green: #DBF1DD;
-$label-green-bg: #5D985D;
+$label-green-bg: #DBF1DD;
+$label-green: #5D985D;
 
-$label-yellow: #F0F1DB;
-$label-yellow-bg: #98985D; 
+$label-yellow-bg: #F0F1DB;
+$label-yellow: #98985D; 
 
-$label-blue: #DBE8F1;
-$label-blue-bg: #5D7E98;
+$label-blue-bg: #DBE8F1;
+$label-blue: #5D7E98;
 
-$label-red: #F1DBDB;
-$label-red-bg: #985D5D;
+$label-red-bg: #F1DBDB;
+$label-red: #985D5D;
 
 body {
     font-size: 16px;
@@ -68,9 +68,77 @@ header {
         }
     }
     #responses {
-        margin-top: 25px;
+        margin-top: 30px;
         background: #fff;
         border: 1px solid #D9DCE3;
         box-shadow: 0 1px 5px #E0E2EA;
+
+        .method-label {
+            display: inline-block;
+            font-size: 14px;
+            width: 70px;
+            height: 35px;
+            padding-top: 6px;
+            text-align: center;
+
+            &.method-label-get {
+                color: $label-green;
+                background: $label-green-bg;
+            }
+
+            &.method-label-post {
+                color: $label-yellow;
+                background: $label-yellow-bg;
+            }
+
+            &.method-label-put {
+                color: $label-blue;
+                background: $label-blue-bg;
+            }
+
+            &.method-label-delete {
+                color: $label-red;
+                background: $label-red-bg;
+            }
+        }
+
+        .response-item {
+            display:block;
+            padding: 10px 18px 9px 11px;
+            border-top: 1px solid #D9DCE3;
+            color: $default-text-color;
+
+            &:first-child {
+                border-top: none;
+            }
+            &:hover {
+                text-decoration: none;
+                background: #F6F7F8;
+            }
+            h4 {
+                display: inline-block;
+                font-size: 16px;
+                font-weight: normal;
+                margin-left: 10px;
+            }
+            span.url {
+                float: right;
+                color: $main-color;
+                font-size: 12px;
+                margin-top: 7px;
+            }
+        }
     }
 }
+
+// $label-green: #DBF1DD;
+// $label-green-bg: #5D985D;
+
+// $label-yellow: #F0F1DB;
+// $label-yellow-bg: #98985D; 
+
+// $label-blue: #DBE8F1;
+// $label-blue-bg: #5D7E98;
+
+// $label-red: #F1DBDB;
+// $label-red-bg: #985D5D;
