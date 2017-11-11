@@ -24,13 +24,13 @@ body {
 // headers
 header {
     background: $header-color;
-    height: 80px;
+    height: 60px;
     box-shadow: 0 2px 4px #EDEFF2;
 
     .container {
         text-align: center;
         #logo {
-            margin-top: 28px;
+            margin-top: 20px;
             width: 63px;
             height: 21px;
         }
@@ -42,43 +42,36 @@ header {
         margin-top: 30px;
         #new-button {
             display: inline-block;
-            a {
-                display: inline-block;
-                background: $main-color;
-                padding: 15px;
-                box-shadow: 0 1px 8px #2D6BD7;
+            background: $main-color;
+            padding: 7px 10px;
+            box-shadow: 0 1px 8px #2D6BD7;
+            border-radius: 3px;
+            color: white;
+            font-size:14px;
 
-                img {
-                    width: 15px;
-                    height: 15px;
-                }
-            }
-            h4 {
-                display: inline-block;
-                margin-left: 20px;
-                font-size: 20px;
+            img {
+                position:relative;
+                top:-1px;
+                width: 10px;
+                height: 10px;
+                margin-right:4px;
             }
         }
 
         #total-responses {
-            float: right;
+            padding-top: 10px;
             font-size: 12px;
-            margin-top: 15px;
             color: #A6A9AE;
         }
     }
-    #responses {
+    .responses {
         margin-top: 30px;
-        background: #fff;
-        border: 1px solid #D9DCE3;
-        box-shadow: 0 1px 5px #E0E2EA;
 
         .method-label {
             display: inline-block;
-            font-size: 14px;
-            width: 70px;
-            height: 35px;
-            padding-top: 6px;
+            font-size: 11px;
+            padding: 2px 5px;
+            border-radius: 3px;
             text-align: center;
 
             &.method-label-get {
@@ -104,28 +97,29 @@ header {
 
         .response-item {
             display:block;
-            padding: 10px 18px 9px 11px;
-            border-top: 1px solid #D9DCE3;
+            background: #fff;
+            box-shadow: 0 1px 5px #E0E2EA;
             color: $default-text-color;
+            padding:7px;
 
-            &:first-child {
-                border-top: none;
-            }
             &:hover {
                 text-decoration: none;
                 background: #F6F7F8;
             }
-            h4 {
-                display: inline-block;
-                font-size: 16px;
-                font-weight: normal;
-                margin-left: 10px;
+            .response-header {
+                padding-left: 8px;
+                h4 {
+                    display: inline-block;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin:0;
+                    padding:0;
+                }
             }
-            span.url {
-                float: right;
+            div.url {
+                padding-left: 8px;
                 color: $main-color;
                 font-size: 12px;
-                margin-top: 7px;
             }
         }
     }

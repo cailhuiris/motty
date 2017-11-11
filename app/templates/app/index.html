@@ -20,43 +20,69 @@
         <div id="body" class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="tools">
-                        <div id="new-button">
-                            <a href="#"><img src="{% static '/images/add.png' %} " title="new response" /></a>
-                            <h4>New Response</h4>
+                    <div class="tools row">
+                        <div id="total-responses" class="col-md-6">
+                            Total Responses: 5
                         </div>
-                        <div id="total-responses">Total Responses: 0</div>
+                        <div class="col-md-6 text-right">
+                            <a href="#" id="new-button">
+                                <img src="{% static '/images/add.png' %} " title="new response" />
+                                New Response
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div id="responses">
-                        <a href="#" class="response-item">
-                            <span class="method-label method-label-get">GET</span>
-                            <h4>User List</h4>
-                            <span class="url">/users</span>
-                        </a>
-                        <a href="#" class="response-item">
-                            <span class="method-label method-label-post">POST</span>
-                            <h4>User List</h4>
-                            <span class="url">/users</span>
-                        </a>
-                        <a href="#" class="response-item">
-                            <span class="method-label method-label-put">PUT</span>
-                            <h4>User List</h4>
-                            <span class="url">/users</span>
-                        </a>
-                        <a href="#" class="response-item">
-                            <span class="method-label method-label-delete">DELETE</span>
-                            <h4>User List</h4>
-                            <span class="url">/users</span>
-                        </a>
-                        <a href="#" class="response-item">
-                            <span class="method-label method-label-get">GET</span>
-                            <h4>User List</h4>
-                            <span class="url">/users</span>
-                        </a>
+                    <div class="responses row">
+                        <div class="col-md-4">
+                            <a href="#" class="response-item">
+                                <div class="response-header">
+                                    <h4>사용자 리스트</h4>
+                                    <span class="method-label method-label-get">GET</span>
+                                </div>
+                                <div class="url">/users</div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="response-item">
+                                <div class="response-header">
+                                    <h4>사용자 추가</h4>
+                                    <span class="method-label method-label-post">POST</span>
+                                </div>
+                                <div class="url">/user</div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="response-item">
+                                <div class="response-header">
+                                    <h4>사용자 수정</h4>
+                                    <span class="method-label method-label-put">PUT</span>
+                                </div>
+                                <div class="url">/user</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="responses row">
+                        <div class="col-md-4">
+                            <a href="#" class="response-item">
+                                <div class="response-header">
+                                    <h4>사용자 삭제</h4>
+                                    <span class="method-label method-label-delete">POST</span>
+                                </div>
+                                <div class="url">/user/1/delete</div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="response-item">
+                                <div class="response-header">
+                                    <h4>사용자 정보</h4>
+                                    <span class="method-label method-label-get">GET</span>
+                                </div>
+                                <div class="url">/user/{id}</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
