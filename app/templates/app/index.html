@@ -100,29 +100,30 @@
                             </button>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Action Name" />
+                            <input type="text" class="form-control" name="name" placeholder="Name" />
                         </div>
                         <div class="form-group">
-                            <label class="form-label">url</label>
                             <input type="text" class="form-control" name="url" placeholder="/actions" />
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">method</label>
-                            <select id="select-method">
-                                <option value="get">GET</option>
-                                <option value="post">POST</option>
-                                <option value="delete">DELETE</option>
-                                <option value="put">PUT</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">content type</label>
-                            <select id="select-body">
-                                <option value="application/json">application/json</option>
-                                <option value="application/xml">application/xml</option>
-                                <option value="plain/text">plain/text</option>
-                            </select>
+                        <div class="row">
+                            <div class="form-group col-md-5">
+                                <select id="select-method">
+                                    <option value="">Select a method</option>
+                                    <option value="get">GET</option>
+                                    <option value="post">POST</option>
+                                    <option value="delete">DELETE</option>
+                                    <option value="put">PUT</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <select id="select-body">
+                                    <option value="">Content Type</option>
+                                    <option value="application/json">application/json</option>
+                                    <option value="application/xml">application/xml</option>
+                                    <option value="text/plain">text/plain</option>
+                                    <option value="text/html">text/html</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="response-body" rows="8"></textarea>

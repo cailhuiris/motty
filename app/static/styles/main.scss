@@ -126,5 +126,56 @@ header {
 }
 
 #create_response_modal {
-    
+    button.close {
+        color: lighten($default-text-color, 30);
+    }
+    .modal-content {
+        .form-label {
+            color: lighten($default-text-color, 30);
+            font-weight: 400;
+        }
+        input[type=text].form-control {
+            border: none;
+            border-bottom: 1px solid lighten($default-text-color, 50);
+            border-radius: 0;
+        }
+    }
+}
+
+.select2-container {
+    display: block;
+    &.select2-container--focus .select2-selection--single {
+        background: #F3F5F8;
+        outline: none;
+    }
+    .select2-selection--single {
+        padding: 3px 5px 3px 5px;
+        border-radius: 0px;
+        border: none;
+        height: auto;
+        &:hover {
+            background: #F3F5F8;
+        }
+        .select2-selection__rendered {
+            color: lighten($default-text-color, 20);
+        }
+        .select2-selection__arrow {
+            top: 5px;
+            right: 6px;
+        }
+    }
+    .select2-dropdown {
+        border: 1px solid lighten($default-text-color, 50);
+        box-shadow: 0 1px 5px #E0E2EA;
+        .select2-results__option--highlighted[aria-selected] {
+            color: lighten($default-text-color, 30);
+            background: #E2E8F2;
+        }
+        .select2-results__option[aria-selected=true] {
+            background: #F3F5F8;
+            &:hover {
+                color: $default-text-color;
+            }
+        }
+    }
 }
