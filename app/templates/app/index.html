@@ -1,5 +1,6 @@
 {% load staticfiles compress %}
-<html>
+<!DOCTYPE html>
+<html ng-app="motty">
     <head>
         <title>Motty - Modern web tools that create fake responses.</title>
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap.min.css' %}" />
@@ -12,6 +13,8 @@
         <script type="text/javascript" src="{% static '/plugins/popper/popper.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/select2-4.0.5/js/select2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
     </head>
     <body>
@@ -38,52 +41,17 @@
             </div>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="responses row">
-                        <div class="col-md-4">
+                    <div class="responses row" ng-controller="ActionList.ctrl">
+                        <div class="col-md-4" ng-repeat="action in actions">
                             <a href="#" class="response-item">
                                 <div class="response-header">
-                                    <h4>사용자 리스트</h4>
-                                    <span class="method-label method-label-get">GET</span>
+                                    <h4 ng-bind="action.name"></h4>
+                                    <span class="method-label method-label-post" ng-if="action.method == 'POST'">POST</span>
+                                    <span class="method-label method-label-get" ng-if="action.method == 'GET'">GET</span>
+                                    <span class="method-label method-label-put" ng-if="action.method == 'PUT'">PUT</span>
+                                    <span class="method-label method-label-delete" ng-if="action.method == 'DELETE'">DELETE</span>
                                 </div>
-                                <div class="url">/users</div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="#" class="response-item">
-                                <div class="response-header">
-                                    <h4>사용자 추가</h4>
-                                    <span class="method-label method-label-post">POST</span>
-                                </div>
-                                <div class="url">/user</div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="#" class="response-item">
-                                <div class="response-header">
-                                    <h4>사용자 수정</h4>
-                                    <span class="method-label method-label-put">PUT</span>
-                                </div>
-                                <div class="url">/user</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="responses row">
-                        <div class="col-md-4">
-                            <a href="#" class="response-item">
-                                <div class="response-header">
-                                    <h4>사용자 삭제</h4>
-                                    <span class="method-label method-label-delete">POST</span>
-                                </div>
-                                <div class="url">/user/1/delete</div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="#" class="response-item">
-                                <div class="response-header">
-                                    <h4>사용자 정보</h4>
-                                    <span class="method-label method-label-get">GET</span>
-                                </div>
-                                <div class="url">/user/{id}</div>
+                                <div class="url" ng-bind="action.url"></div>
                             </a>
                         </div>
                     </div>

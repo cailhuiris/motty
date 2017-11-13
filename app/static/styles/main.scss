@@ -106,6 +106,9 @@ header {
                 text-decoration: none;
                 background: #F6F7F8;
             }
+            @media (min-width: 768px) {
+                margin-bottom: 30px;
+            }
             .response-header {
                 padding-left: 8px;
                 h4 {
