@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap-grid.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/select2-4.0.5/css/select2.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
         {% compress css %}
             <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
         {% endcompress %}
@@ -15,6 +17,7 @@
         <script type="text/javascript" src="{% static '/plugins/select2-4.0.5/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/ng-dialog/js/ngDialog.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
     </head>
     <body>
@@ -26,12 +29,12 @@
         <div id="body" class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="tools row">
+                    <div class="tools row" ng-controller="Tools.ctrl">
                         <div id="total-responses" class="col-md-6">
                             Base URL: http://localhost:8000/motty/base/
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="#" id="new-button" data-toggle="modal" data-target="#create_response_modal">
+                            <a href="#" id="new-button" ng-click="openCreateForm()">
                                 <img src="{% static '/images/add.png' %} " title="new response" />
                                 New Response
                             </a>
@@ -42,6 +45,9 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="responses row" ng-controller="ActionList.ctrl">
+                        <div class="col-md-8 offset-md-2" ng-if="actions.length == 0">
+                            You can add a new response by clicking button at right corner.
+                        </div>
                         <div class="col-md-4" ng-repeat="action in actions">
                             <a href="#" class="response-item">
                                 <div class="response-header">
@@ -58,53 +64,5 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="create_response_modal" tabindex="-1" role="dialog" aria-labelledby="create_response_modal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="Name" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="url" placeholder="/actions" />
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-5">
-                                <select id="select-method">
-                                    <option value="">Select a method</option>
-                                    <option value="get">GET</option>
-                                    <option value="post">POST</option>
-                                    <option value="delete">DELETE</option>
-                                    <option value="put">PUT</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-5">
-                                <select id="select-body">
-                                    <option value="">Content Type</option>
-                                    <option value="application/json">application/json</option>
-                                    <option value="application/xml">application/xml</option>
-                                    <option value="text/plain">text/plain</option>
-                                    <option value="text/html">text/html</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" name="response-body" rows="8"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-save btn-primary">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $("#select-method, #select-body").select2({
-                minimumResultsForSearch: Infinity
-            });
-        </script>
     </body>
 </html>

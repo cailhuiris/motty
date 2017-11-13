@@ -1,4 +1,4 @@
-var app = angular.module('motty', ['ngResource'], function($interpolateProvider) {
+var app = angular.module('motty', ['ngResource', 'ngDialog'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
@@ -19,10 +19,29 @@ app.factory('Action', ['$resource', function($resource) {
 }])
 
 // controllers
-app.controller('ActionList.ctrl', function($scope, Actions, Action){
-    $scope.actions = [];
+app.controller('Tools.ctrl', function($scope, ngDialog) {
+    $scope.openCreateForm = function(){
+        ngDialog.open({ 
+            template: '/static/templates/create-action-dialog.html', 
+            controller: 'ActionCreate.ctrl'
+        });
+    };
+});
+
+app.controller('ActionCreate.ctrl', function($scope, $rootScope, Action){
+    $scope.action = {name:"", url:"", method:"", contentType:"", body:""}
+    $scope.save = function(){
+        Action.create($scope.action, function(res){
+            $rootScope.actions.push($scope.action);
+            $scope.closeThisDialog();
+        });
+    };
+});
+
+app.controller('ActionList.ctrl', function($scope, $rootScope, Actions, Action){
+    $rootScope.actions = [];
 
     Actions.get(function(res){
-        $scope.actions = res;
+        $rootScope.actions = res;
     });
 });
