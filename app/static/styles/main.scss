@@ -128,6 +128,23 @@ header {
     }
 }
 
+footer {
+    .container {
+        padding: 10px 0 60px 0;
+        text-align: center;
+        #whoiam {
+            color: lighten($default-text-color, 40);
+            a {
+                color: lighten($default-text-color, 40);
+                img {
+                    width: 30px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}
+
 #create-action-form {
     padding-top:20px;
     button {
