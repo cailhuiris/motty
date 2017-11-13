@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
+
+from .utils import remove_last_slash
 from .models import Action
 from .serializers import ActionSerializer
 
@@ -73,5 +75,12 @@ def get_action(request, id):
     return JsonResponse(model_to_dict(action))
 
 # fake responses.
+@csrf_exempt
 def return_fake_request(request, endpoint):
-    pass
+    endpoint = "/" + endpoint
+    actions = Action.objects.filter(url=remove_last_slash(endpoint), method=request.method)
+    if len(actions) > 0:
+        action = actions[0]
+        return HttpResponse(action.body, content_type=action.contentType)
+    else:
+        return HttpResponse('No such response exists.', status=404)

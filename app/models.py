@@ -11,7 +11,5 @@ class Action(models.Model):
     created_at = models.DateTimeField(default = datetime.now())
 
     def __str__(self):
-        print(\
-            "name: {0}, url: {1}, method: {2}, contentType: {3}, body: {4}, created_at: {5}"\
-            .format(self.name, self.url, self.method, self.contentType, self.body, self.created_at)\
-        )
+        return "name: {0}, url: {1}, method: {2}, contentType: {3}, body: {4}, created_at: {5}"\
+            .format(self.name, self.url, self.method, self.contentType, self.body, self.created_at)
