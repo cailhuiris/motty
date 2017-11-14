@@ -1,6 +1,6 @@
 $main-color: #337AF6;
 $background-color: #F3F5F8;
-$header-color: #fff;
+$header-color: $main-color;
 $default-text-color: #4D5561;
 
 $label-green-bg: #DBF1DD;
@@ -30,9 +30,9 @@ header {
     .container {
         text-align: center;
         #logo {
-            margin-top: 20px;
-            width: 63px;
-            height: 21px;
+            margin-top:10px;
+            width:40px;
+            height:40px;
         }
     }
 }
