@@ -86,34 +86,6 @@ header {
     .responses {
         margin-top: 30px;
 
-        .method-label {
-            display: inline-block;
-            font-size: 11px;
-            padding: 2px 5px;
-            border-radius: 3px;
-            text-align: center;
-
-            &.method-label-get {
-                color: $label-green;
-                background: $label-green-bg;
-            }
-
-            &.method-label-post {
-                color: $label-yellow;
-                background: $label-yellow-bg;
-            }
-
-            &.method-label-put {
-                color: $label-blue;
-                background: $label-blue-bg;
-            }
-
-            &.method-label-delete {
-                color: $label-red;
-                background: $label-red-bg;
-            }
-        }
-
         .response-item {
             display:block;
             background: #fff;
@@ -194,6 +166,95 @@ footer {
         border: none;
         border-bottom: 1px solid lighten($default-text-color, 50);
         border-radius: 0;
+    }
+}
+
+#view-action-dialog {
+    margin-top:8px;
+    padding: 0 15px;
+    .view-header {
+        span.method-label {
+            font-size: 14px;
+            padding: 3px 8px;
+            height: 30px;
+        }
+    }
+    .view-name {
+        margin-top:12px;
+        h4 {
+            display:inline-block;
+            font-size: 20px;
+            color: $default-text-color;
+        }
+        span.url {
+            font-size: 14px;
+            color: lighten($default-text-color, 20);
+            margin-left: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-left: 10px;
+            margin-top: -1px;
+            font-size: 12px;
+            height: 30px;
+            &:focus {
+                box-shadow:none;
+            }
+            i {
+                margin-right: 7px;
+            }
+        }
+    }
+    .view-body {
+        margin-top: 20px;
+        span.content-type {
+            display:inline-block;
+            padding: 2px 10px 3px 10px;
+            background: #ECEEF1;
+            color: #878E95;
+            font-size: 14px;
+        }
+    }
+    .content {
+        pre {
+            width: 100%;
+            background: #f8f8f8;
+            margin: 0px;
+        }
+    }
+}
+
+/* components */
+.btn {
+    cursor: pointer;
+}
+
+.method-label {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 5px;
+    margin:0;
+    border-radius: 3px;
+    text-align: center;
+
+    &.method-label-get {
+        color: $label-green;
+        background: $label-green-bg;
+    }
+
+    &.method-label-post {
+        color: $label-yellow;
+        background: $label-yellow-bg;
+    }
+
+    &.method-label-put {
+        color: $label-blue;
+        background: $label-blue-bg;
+    }
+
+    &.method-label-delete {
+        color: $label-red;
+        background: $label-red-bg;
     }
 }
 

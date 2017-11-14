@@ -74,10 +74,36 @@ app.controller('ActionCreate.ctrl', function($scope, $rootScope, Action){
     };
 });
 
-app.controller('ActionList.ctrl', function($scope, $rootScope, Actions, Action){
+app.controller('ActionList.ctrl', function($scope, $rootScope, $timeout, Actions, Action, ngDialog){
     $rootScope.actions = [];
 
     Actions.get(function(res){
         $rootScope.actions = res;
     });
+
+    $scope.showDetail = function($idx){
+        var action = $rootScope.actions[$idx];
+        Action.get({actionId: action.id}, function(res){
+            $scope.action = res;
+
+            ngDialog.open({ 
+                template: '/static/templates/view-action-dialog.html', 
+                width: '50%',
+                controller: 'ActionView.ctrl',
+                scope: $scope,
+                onOpenCallback: function(){
+                    $timeout(function(){
+                        $('pre code').each(function(i, block) {
+                            console.log("block 1");
+                            hljs.highlightBlock(block);
+                        });
+                    }, 100);
+                }
+            });
+        });
+    }
+});
+
+app.controller('ActionView.ctrl', function($scope, $timeout){
+    
 });

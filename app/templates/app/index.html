@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/notify/animate.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/highlight/styles/github.css' %}" />
         {% compress css %}
             <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
         {% endcompress %}
@@ -21,6 +22,7 @@
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/ng-dialog/js/ngDialog.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/highlight/highlight.pack.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
     </head>
     <body>
@@ -66,7 +68,7 @@
                         </div>
                         <div class="col-md-4" ng-repeat="action in actions">
                             <input type="checkbox" ng-if="is_deleting" ng-model="action.isToDelete">
-                            <a href="#" class="response-item">
+                            <a href="" class="response-item" ng-click="showDetail($index)">
                                 <div class="response-header">
                                     <h4 ng-bind="action.name"></h4>
                                     <span class="method-label method-label-post" ng-if="action.method == 'POST'">POST</span>
