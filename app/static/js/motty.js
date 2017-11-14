@@ -19,6 +19,14 @@ app.factory('Action', ['$resource', function($resource) {
     });
 }])
 
+app.run(function($rootScope, Actions){
+    $rootScope.updateActions = function(){
+        Actions.get(function(res){
+            $rootScope.actions = res;
+        });
+    }
+});
+
 // controllers
 app.controller('Tools.ctrl', function($scope, $rootScope, ngDialog, Action) {
     $scope.openCreateForm = function(){
@@ -138,7 +146,7 @@ app.controller('ActionView.ctrl', function($scope, $timeout, ngDialog){
     }
 });
 
-app.controller('ActionEdit.ctrl', function($scope, Action){
+app.controller('ActionEdit.ctrl', function($scope, $rootScope, Action){
     var id = $("#update_action_id").val();
     Action.get({id: id}, function(res){
         $scope.action = res;
@@ -147,6 +155,7 @@ app.controller('ActionEdit.ctrl', function($scope, Action){
     $scope.save = function(){
         $scope.closeThisDialog();
         Action.update($scope.action, function(res){
+            $rootScope.updateActions();
             $.notify('Successfully saved.');
         });
     };
