@@ -9,12 +9,14 @@
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/select2-4.0.5/css/select2.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/notify/animate.css' %}" />
         {% compress css %}
             <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
         {% endcompress %}
         <script type="text/javascript" src="{% static '/plugins/jquery/jquery-3.2.1.slim.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/popper/popper.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/notify/bootstrap-notify.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/select2-4.0.5/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
@@ -39,18 +41,18 @@
                                 <i class="ion ion-plus"></i>
                                 New Response
                             </a>
-                            <a href="" class="btn btn-light" ng-if="!is_deleting" ng-click="prepareToDelete()">
+                            <button class="btn btn-light" ng-disabled="actions.length == 0" ng-if="!is_deleting" ng-click="prepareToDelete()">
                                 <i class="ion ion-trash-a"></i>
                                 Select to delete
-                            </a>
-                            <a href="" id="delete-actions" class="btn btn-danger" ng-if="is_deleting" ng-click="delete()">
+                            </button>
+                            <button id="delete-actions" class="btn btn-danger" ng-if="is_deleting" ng-click="delete()">
                                 <i class="ion ion-trash-a"></i>
                                 Delete!
-                            </a>
-                            <a href="" class="btn btn-light" ng-if="is_deleting" ng-click="cancel()">
+                            </button>
+                            <button class="btn btn-light" ng-if="is_deleting" ng-click="cancel()">
                                 <i class="ion ion-ios-close-outline"></i>
                                 Cancel
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

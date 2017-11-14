@@ -39,12 +39,18 @@ app.controller('Tools.ctrl', function($scope, $rootScope, ngDialog, Action) {
             return action.id;
         });
 
-        Action.deleteAll({ids:_ids}, function(res){
-            $rootScope.actions = $rootScope.actions.filter(function(action){
-                return _ids.indexOf(action.id) == -1;
+        if(_ids.length == 0) {
+            $.notify('No selected actions.', { type: "warning" });
+        } else {
+            Action.deleteAll({ids:_ids}, function(res){
+                $.notify('Successfully deleted.');
+
+                $rootScope.actions = $rootScope.actions.filter(function(action){
+                    return _ids.indexOf(action.id) == -1;
+                });
+                $rootScope.is_deleting = false;
             });
-            $rootScope.is_deleting = false;
-        });
+        }
     }
 
     $scope.cancel = function(){
@@ -59,6 +65,8 @@ app.controller('Tools.ctrl', function($scope, $rootScope, ngDialog, Action) {
 app.controller('ActionCreate.ctrl', function($scope, $rootScope, Action){
     $scope.action = {name:"", url:"", method:"", contentType:"", body:""}
     $scope.save = function(){
+        $.notify('Successfully created.');
+
         Action.create($scope.action, function(res){
             $rootScope.actions.push($scope.action);
             $scope.closeThisDialog();
