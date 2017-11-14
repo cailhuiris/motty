@@ -31,13 +31,25 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="tools row" ng-controller="Tools.ctrl">
-                        <div id="total-responses" class="col-md-6">
-                            Base URL: http://localhost:8000/motty/base/
+                        <div id="total-responses" class="col-md-4">
+                            Base URL<br />http://localhost:8000/motty/base/
                         </div>
-                        <div class="col-md-6 text-right">
-                            <a href="#" id="new-button" ng-click="openCreateForm()">
+                        <div class="col-md-8 text-right">
+                            <a href="" id="new-button" class="btn btn-primary" ng-click="openCreateForm()">
                                 <img src="{% static '/images/add.png' %} " title="new response" />
                                 New Response
+                            </a>
+                            <a href="" class="btn btn-light" ng-if="!is_deleting" ng-click="prepareToDelete()">
+                                <i class="ion ion-trash-a"></i>
+                                Select to delete
+                            </a>
+                            <a href="" id="delete-actions" class="btn btn-danger" ng-if="is_deleting" ng-click="delete()">
+                                <i class="ion ion-trash-a"></i>
+                                Delete!
+                            </a>
+                            <a href="" class="btn btn-light" ng-if="is_deleting" ng-click="cancel()">
+                                <i class="ion ion-ios-close-outline"></i>
+                                Cancel
                             </a>
                         </div>
                     </div>
@@ -50,6 +62,7 @@
                             You can add a new response by clicking button at right corner.
                         </div>
                         <div class="col-md-4" ng-repeat="action in actions">
+                            <input type="checkbox" ng-if="is_deleting" ng-model="action.isToDelete">
                             <a href="#" class="response-item">
                                 <div class="response-header">
                                     <h4 ng-bind="action.name"></h4>

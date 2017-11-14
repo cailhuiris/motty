@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from django.forms.models import model_to_dict
+from django.db import connection
 from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -68,6 +69,17 @@ def delete_action(request, id):
         return HttpResponse('deleted.')
     except ObjectDoesNotExist:
         return HttpResponse('There is no data to delete.')
+
+@csrf_exempt
+@api_view(['POST'])
+def delete_all(request):
+    res = json.loads(request.body.decode('utf-8'))
+    ids = res['ids']
+    with connection.cursor() as cursor:
+        cursor.execute('DELETE FROM app_action WHERE id in ' + "(" + ",".join(map(str, ids)) + ")")
+
+    return HttpResponse("your requests are successfully conducted.")
+
 
 @api_view(['GET'])
 def get_action(request, id):
