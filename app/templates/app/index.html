@@ -60,8 +60,9 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="responses row" ng-controller="ActionList.ctrl">
-                        <div class="col-md-8 offset-md-2" ng-if="actions.length == 0">
-                            You can add a new response by clicking button at right corner.
+                        <div class="col-md-12" id="when-no-data" ng-if="actions.length == 0">
+                            <img src="{% static '/images/guide1.png' %}" id="guide-image" title="Let's start motty!" />
+                            <img src="{% static '/images/empty_data.png' %}" id="no-data-image" title="No Data Y.Y, You can add your own response." />
                         </div>
                         <div class="col-md-4" ng-repeat="action in actions">
                             <input type="checkbox" ng-if="is_deleting" ng-model="action.isToDelete">

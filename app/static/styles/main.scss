@@ -145,6 +145,23 @@ header {
             }
         }
     }
+
+    #when-no-data {
+        height: 400px;
+        text-align: center;
+        #guide-image {
+            position: absolute;
+            right: -10px;
+            top: -25px;
+            width: 269px;
+            height: 106px;
+        }
+        #no-data-image {
+            margin-top:70px;
+            width: 384px;
+            height: 248px;
+        }
+    }
 }
 
 footer {
