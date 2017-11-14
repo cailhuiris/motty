@@ -3,7 +3,7 @@
         <input type="text" class="form-control" name="name" placeholder="Name" ng-model="action.name" />
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" name="url" placeholder="/actions" ng-model="action.url" />
+        <input type="text" class="form-control" name="url" placeholder="/url" ng-model="action.url" />
     </div>
     <div class="row">
         <div class="form-group col-md-5">
@@ -17,7 +17,6 @@
         </div>
         <div class="form-group col-md-5">
             <select id="select-body" ng-model="action.contentType">
-                <option value="">Content Type</option>
                 <option value="application/json">application/json</option>
                 <option value="application/xml">application/xml</option>
                 <option value="text/plain">text/plain</option>

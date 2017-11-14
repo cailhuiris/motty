@@ -63,7 +63,7 @@ app.controller('Tools.ctrl', function($scope, $rootScope, ngDialog, Action) {
 });
 
 app.controller('ActionCreate.ctrl', function($scope, $rootScope, Action){
-    $scope.action = {name:"", url:"", method:"", contentType:"", body:""}
+    $scope.action = {name:"", url:"", method:"", contentType:"application/json", body:""}
     $scope.save = function(){
         $.notify('Successfully created.');
 
