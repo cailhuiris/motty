@@ -1,7 +1,7 @@
-# What is motty?
-Motty is designed to build up the server imitating the restful api server, 
+# Motty, Mock your HTTP!
+Motty is designed to build up the server mocking http protocol!
 
-Motty will make you work **even if the server is not developed yet.**
+so. It will make you work **even though the server is not developed yet.**
 
 You can readily make responses imitating restful standard.
 
