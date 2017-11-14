@@ -68,7 +68,7 @@ app.controller('ActionCreate.ctrl', function($scope, $rootScope, Action){
         $.notify('Successfully created.');
 
         Action.create($scope.action, function(res){
-            $rootScope.actions.push($scope.action);
+            $rootScope.actions.push(res);
             $scope.closeThisDialog();
         });
     };

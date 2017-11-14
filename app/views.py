@@ -35,8 +35,8 @@ def create_new_action(request):
     data = json.loads(request.body.decode('utf-8'))
     serializer = ActionSerializer(data=data)
     if serializer.is_valid() :
-        serializer.save()
-        return HttpResponse('data is successfully saved')
+        action = serializer.save()
+        return JsonResponse(serializer.data, safe=False)
     else:
         return JsonResponse(serializer.errors, status=400)
 
