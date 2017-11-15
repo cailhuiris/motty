@@ -5,9 +5,9 @@ so. It will make you work **even though the server is not developed yet.**
 
 You can readily make responses imitating restful standard.
 
-![Main](../master/app/static/images/github/main.png)
+![Main](../master/motty/app/static/images/github/main.png)
 
-![View information](../master/app/static/images/github/detail.png)
+![View information](../master/motty/app/static/images/github/detail.png)
 
 
 # Installation
