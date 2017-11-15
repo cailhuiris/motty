@@ -9,3 +9,6 @@ __pycache__
 migrations
 CACHE
 share
+build/
+dist/
+motty.egg-info/

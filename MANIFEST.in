@@ -1,0 +1,8 @@
+graft motty/motty/
+graft motty/app/
+graft motty/db.sqlite3
+graft motty/app/static/
+graft motty/app/templates/
+graft motty/app/migrations/
+global-exclude __pycache__
+global-exclude motty/app/static/CACHE

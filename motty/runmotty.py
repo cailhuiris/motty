@@ -4,19 +4,16 @@ import tornado.ioloop
 import tornado.wsgi
 import sys
 from django.core.wsgi import get_wsgi_application
-#sys.path.append('/home/david/') # path to your project ( if you have it in another dir).
 
-def main():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    print(BASE_DIR)
+libpath = [path for path in sys.path if 'site-packages' in path][0]
+sys.path.append(libpath + "/motty")
 
-    STATIC_ROOT = BASE_DIR + '/app/static'
+def run_motty():
+    STATIC_ROOT = libpath + '/motty/app/static'
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'motty.settings' # path to your settings module
     application = get_wsgi_application()
     container = tornado.wsgi.WSGIContainer(application)
-
-    print(STATIC_ROOT)
 
     tornado_app = tornado.web.Application([
         (r'/static/(.*)', tornado.web.StaticFileHandler, { 'path':STATIC_ROOT }),
@@ -27,5 +24,4 @@ def main():
     http_server.listen(8888)
     tornado.ioloop.IOLoop.instance().start()
 
-if __name__ == "__main__":
-    main()
+run_motty();
