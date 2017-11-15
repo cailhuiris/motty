@@ -127,7 +127,7 @@ app.controller('ActionView.ctrl', function($scope, $timeout, ngDialog){
           
             selection.removeAllRanges();
             document.body.removeChild(node);
-          })('http://localhost:8000/motty/base' + $scope.action.url);
+          })('http://localhost:7000/motty/base' + $scope.action.url);
           
           $.notify('The full url are copied.', {
               element: '#view-action-dialog',
