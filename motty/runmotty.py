@@ -9,19 +9,24 @@ libpath = [path for path in sys.path if 'site-packages' in path][0]
 sys.path.append(libpath + "/motty")
 
 def run_motty():
-    STATIC_ROOT = libpath + '/motty/app/static'
+    try:
+        STATIC_ROOT = libpath + '/motty/app/static'
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'motty.settings' # path to your settings module
-    application = get_wsgi_application()
-    container = tornado.wsgi.WSGIContainer(application)
+        os.environ['DJANGO_SETTINGS_MODULE'] = 'motty.settings' # path to your settings module
+        application = get_wsgi_application()
+        container = tornado.wsgi.WSGIContainer(application)
 
-    tornado_app = tornado.web.Application([
-        (r'/static/(.*)', tornado.web.StaticFileHandler, { 'path':STATIC_ROOT }),
-        (r'.*', tornado.web.FallbackHandler, dict(fallback=container))
-    ])
+        print("Hi, motty is now running on http://localhost:7000/ \nYou can stop it by pressing Ctrl or Command + C on the keyboard.")
 
-    http_server = tornado.httpserver.HTTPServer(tornado_app)
-    http_server.listen(8888)
-    tornado.ioloop.IOLoop.instance().start()
+        tornado_app = tornado.web.Application([
+            (r'/static/(.*)', tornado.web.StaticFileHandler, { 'path':STATIC_ROOT }),
+            (r'.*', tornado.web.FallbackHandler, dict(fallback=container))
+        ])
+
+        http_server = tornado.httpserver.HTTPServer(tornado_app)
+        http_server.listen(7000)
+        tornado.ioloop.IOLoop.instance().start()
+    except KeyboardInterrupt:
+        print("\n\nThe motty is stopped.")
 
 run_motty();
