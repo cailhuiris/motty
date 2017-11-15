@@ -18,12 +18,15 @@ Python>=3.0 is required, so you should install python 3 before proceeding next s
 
 ## 2. Set up an isolated environment.
 > $ pip3 install virtualenv
+
 > $ mkdir ~/mottyenv
+
 > $ virtualenv ~/mottyenv
+
 > $ source ~/mottyenv/bin/activate
 
-## 2. Install motty.
+## 3. Install motty.
 > $ pip install motty
 
-## 3. Run it! and play fun.
+## 4. Run it! and play fun.
 > $ run-motty
