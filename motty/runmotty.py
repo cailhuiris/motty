@@ -5,12 +5,16 @@ import tornado.wsgi
 import sys
 from django.core.wsgi import get_wsgi_application
 
-libpath = [path for path in sys.path if 'site-packages' in path][0]
-sys.path.append(libpath + "/motty")
+# in production.
+# projectpath = [path for path in sys.path if 'site-packages' in path][0] + "/motty"
+
+# in development.
+projectpath = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(projectpath)
 
 def run_motty():
     try:
-        STATIC_ROOT = libpath + '/motty/app/static'
+        STATIC_ROOT = projectpath + '/app/static'
 
         os.environ['DJANGO_SETTINGS_MODULE'] = 'motty.settings' # path to your settings module
         application = get_wsgi_application()
