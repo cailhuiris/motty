@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="./css/spectre-exp.min.css">
         <link rel="stylesheet" type="text/css" href="./css/ionicons.min.css">
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <script src="./js/jquery-1.12.1.min.js" type="text/javascript"></script>
     </head>
     <body>
         <header class="bg-primary">
@@ -74,4 +75,25 @@ You can stop it by pressing <span class="text-primary">Ctrl</span> or <span clas
             </div>
         </div>
     </footer>
+    <script type="text/javascript">
+        $('a[href*="#"]')
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .click(function(event) {
+          if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+            && 
+            location.hostname == this.hostname
+          ) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+              event.preventDefault();
+              $('html, body').animate({
+                scrollTop: target.offset().top
+              }, 500);
+            }
+          }
+        });
+    </script>
 </html>
