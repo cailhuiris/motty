@@ -19,14 +19,10 @@ so it cannot access system library folders like /usr/bin. <br><br>
 This is why motty have to be installed in home directory. <br>
 Afterward, if we can solve this issue, We'll keep you updated <br><br>
 
-> $ pip3 install virtualenv 
-<br>
-> $ mkdir ~/mottyenv 
-<br>
-> $ virtualenv ~/mottyenv 
-<br>
-> $ source ~/mottyenv/bin/activate 
-<br>
+> $ pip3 install virtualenv <br>
+> $ mkdir ~/mottyenv <br>
+> $ virtualenv ~/mottyenv <br> 
+> $ source ~/mottyenv/bin/activate <br>
 
 #### 2. Install motty.
 > $ pip install motty
