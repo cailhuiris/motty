@@ -113,3 +113,12 @@ footer a:hover {
     color: #5755d9;
     text-decoration: none;
 }
+
+@media (max-width: 767px) { 
+    .col-8 {
+        width: 90%;
+    }
+    header #about-motty h3 {
+        line-height: 2.0;
+    }
+}
