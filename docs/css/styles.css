@@ -1,0 +1,98 @@
+/* common */
+footer .container .column,
+#body .container .column,
+header .container .column {
+    margin: 0 auto;
+}
+
+/* header */
+header #logo {
+    width: 40px;
+    height: 40px;
+    margin-top: 40px;
+}
+
+header #about-motty {
+    margin-top: 40px;
+}
+
+header #about-motty h2 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+}
+
+header #about-motty h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 20px 0 0 0;
+}
+
+header #about-motty span {
+    border-bottom: .1rem solid currentColor;
+    padding-bottom: .05rem;
+    text-decoration: none;
+}
+
+header #main-navigation {
+    margin: 60px auto 30px auto;
+}
+header #main-navigation .btn-lg .ion {
+    margin-right: 8px;
+}
+header #main-navigation .btn-lg.make-gap {
+    margin-left: 8px;
+}
+
+/* body */
+#body #installation {
+    padding: 20px 0 10px 0;
+    border-bottom: 1px solid #ECEEF0;
+}
+
+#body #installation h2 {
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0px;
+}
+
+#body #installation h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+    color: #9FA4B2;
+}
+
+#body .section-content {
+    margin-top: 10px;
+}
+
+#body .section-content h4 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 20px 0 5px 0;
+}
+
+/* footer */
+footer {
+    padding: 40px 0 100px 0;
+    margin-top: 30px;
+}
+footer a {
+    color: #50596c;
+    padding: 3px 5px;
+}
+
+footer a img {
+    position: relative;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+footer a:hover {
+    color: #5755d9;
+    text-decoration: none;
+}

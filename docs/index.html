@@ -1,1 +1,70 @@
-Hi, I'm motty landing page.
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/spectre.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/spectre-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/spectre-exp.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    </head>
+    <body>
+        <header class="bg-primary">
+            <div class="container text-center">
+                <div class="columns">
+                    <div class="column col-8 text-center">
+                        <a href="/"><img src="./images/mask.png" id="logo">Motty</a>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div id="about-motty" class="column col-8 text-center">
+                        <h2><span>Mock your HTTP!</span></h2>
+                        <h3><span>Modern</span> and <span>simpler</span> way to generate custom http responses.</h3>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div id="main-navigation" class="column col-8 text-center">
+                        <a href="https://github.com/scalalang2/motty" class="btn btn-lg" target="_blank"><i class="ion ion-social-github"></i>View on github</a>
+                        <a href="#installation" class="btn btn-lg make-gap"><i class="ion ion-ios-download-outline"></i>Install motty</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="body">
+            <div class="container">
+                <div class="columns section-divider">
+                    <div id="installation" class="column col-8">
+                        <h2>Installation.</h2>
+                        <h3>Python>=3.0 is required, so you should install python 3 before proceeding next step.</h3>
+                    </div>
+                </div>
+                <div class="columns section-content">
+                    <div class="column col-8">
+                        <h4>Set up an isolated environment. <span class="required">(required)</span></h4>
+<pre class="code" data-lang="Terminal"><code><span class="text-primary">$</span> pip3 install virtualenv
+<span class="text-primary">$</span> mkdir ~/mottyenv
+<span class="text-primary">$</span> virtualenv ~/mottyenv
+<span class="text-primary">$</span> source ~/motty/bin/activate</code></pre>
+                        <h4>Install motty and play fun!</h4>
+<pre class="code" data-lang="Terminal"><code><span class="text-primary">$</span> pip install motty
+<span class="text-primary">$</span> <span class="text-success">run-motty</span></code></pre>
+<pre class="code" data-lang="result"><code>Hi, motty is now running on http://localhost:<span class="text-primary">7000</span>/
+You can stop it by pressing <span class="text-primary">Ctrl</span> or <span class="text-primary">Command + C</span> on the keyboard.</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <footer class="bg-gray">
+        <div class="container">
+            <div class="columns">
+                <div class="column col-8 text-center">
+                    <a href="https://github.com/scalalang2" target="_blank">
+                        <img src="./images/github.png" id="github-logo" title="github" />
+                        <span>scalalang2</span>
+                    </a>
+                    / since 11. 2017.
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
