@@ -1,4 +1,8 @@
 /* common */
+body {
+    font-family: Helvetica, sans-serif;
+}
+
 footer .container .column,
 #body .container .column,
 header .container .column {
@@ -7,9 +11,22 @@ header .container .column {
 
 /* header */
 header #logo {
-    width: 40px;
-    height: 40px;
-    margin-top: 40px;
+    margin-top:40px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+}
+
+header #logo:hover {
+    text-decoration: none;
+}
+
+header #logo img {
+    position: relative;
+    top: 7px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
 }
 
 header #about-motty {
