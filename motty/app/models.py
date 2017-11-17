@@ -1,8 +1,17 @@
 from datetime import datetime
 from django.db import models
 
+class Resource(models.Model):
+    '''Resource manages actions.'''
+    name = models.CharField(max_length=30)
+    url = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "name: {0}, url: {1}".format(self.name, self.url)
+
 class Action(models.Model):
-    '''A Response, I\'ll group actions to the resource at near future. '''
+    '''Action produces responses to client, and all actions are managed by resource.'''
+    resource = models.ForeignKey(Resource, null=False)
     name = models.CharField(max_length=30)
     url = models.CharField(max_length=50)
     method = models.CharField(max_length=50)
