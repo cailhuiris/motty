@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'app/static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 
 SASS_PROCESSOR_ENABLED = True
 
@@ -139,9 +139,6 @@ SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, 'app/static/styles'),
 ]
 
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'app/static')
-
 SASS_PRECISION = 8
 
 SASS_OUTPUT_STYLE = 'compact'
-
