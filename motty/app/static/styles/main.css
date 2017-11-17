@@ -66,51 +66,23 @@ footer .container #whoiam a { color: #bbc1cd; }
 
 footer .container #whoiam a img { width: 20px; height: 16px; }
 
-#create-action-form { padding-top: 20px; }
+#action-edit-form .title-input { font-size: 20px; }
 
-#create-action-form button { cursor: pointer; }
+#action-edit-form .url-input { color: #5755d9; }
 
-#create-action-form .form-label { color: #9ea6b7; font-weight: 400; }
+#action-edit-form .select-box { margin: 0px; }
 
-#create-action-form input[type=text].form-control { border: none; border-bottom: 1px solid #d9dce2; border-radius: 0; }
+#action-edit-form .select-box .form-group-gap { margin-left: 10px; }
 
-#view-action-dialog { margin-top: 8px; padding: 0 15px; }
+#action-edit-form .type-response-area { margin-top: 20px; }
 
-#view-action-dialog .view-header span.method-label { font-size: 14px; padding: 3px 8px; height: 30px; }
+#action-edit-form .type-response-area .response-label { display: block; padding: 5px 0; }
 
-#view-action-dialog .view-name { margin-top: 12px; }
+#action-edit-form .type-response-area #response { border: 1px solid #caced7; }
 
-#view-action-dialog .view-name h4 { display: inline-block; font-size: 20px; color: #50596c; }
-
-#view-action-dialog .view-name span.url { font-size: 14px; color: #818ba1; margin-left: 10px; }
-
-#view-action-dialog .view-name .btn { display: inline-block; margin-left: 10px; margin-top: -1px; font-size: 12px; height: 30px; }
-
-#view-action-dialog .view-name .btn:focus { box-shadow: none; }
-
-#view-action-dialog .view-name .btn i { margin-right: 7px; }
-
-#view-action-dialog .view-body { margin-top: 20px; }
-
-#view-action-dialog .view-body span.content-type { display: inline-block; padding: 2px 10px 3px 10px; background: #ECEEF1; color: #878E95; font-size: 14px; }
-
-#view-action-dialog .content pre { width: 100%; background: #f8f8f8; margin: 0px; }
-
-#view-action-dialog .alert-info { font-size: 14px; padding: 5px 10px; }
+#action-edit-form button .ion { margin-right: 8px; }
 
 /* components */
 .btn { cursor: pointer; }
-
-.method-label { display: inline-block; font-size: 11px; padding: 2px 5px; margin: 0; border-radius: 3px; text-align: center; }
-
-.method-label.method-label-get { color: #5D985D; background: #DBF1DD; }
-
-.method-label.method-label-post { color: #98985D; background: #F0F1DB; }
-
-.method-label.method-label-put { color: #5D7E98; background: #DBE8F1; }
-
-.method-label.method-label-delete { color: #985D5D; background: #F1DBDB; }
-
-.ngdialog.ngdialog-theme-default .ngdialog-content { background: #fff; }
 
 /*# sourceMappingURL=../../../../../../../../static/styles/main.css.map */

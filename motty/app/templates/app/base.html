@@ -1,0 +1,50 @@
+{% load staticfiles sass_tags %}
+<!DOCTYPE html>
+<html ng-app="motty">
+    <head>
+        <title>Motty - Modern web tools that create fake responses.</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/spectre/css/spectre.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ionicons/css/ionicons.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/notify/animate.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/highlight/styles/github.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/codeflask/codeflask.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% sass_src 'styles/main.scss' %}" />
+        <script type="text/javascript" src="{% static '/plugins/jquery/jquery-3.2.1.slim.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/popper/popper.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/notify/bootstrap-notify.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/ng-dialog/js/ngDialog.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/highlight/highlight.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/codeflask/prism.min.js' %}"></script>
+        <script type="text/javascript" src="{% static '/plugins/codeflask/codeflask.js' %}"></script>
+        <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <a href="/" id="logo"><img src="{% static '/images/mask.png' %}" title="logo" />Motty</a>
+            </div>
+        </header>
+        <div id="body">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div id="whoiam">
+                    <a href="https://github.com/scalalang2" target="_blank">
+                        <img src="{% static '/images/github.png' %}" id="github-logo" title="github" />
+                        <span>scalalang2</span>
+                    </a>
+                    / since 11. 2017.
+                </div>
+            </div>
+        </footer>
+        <input type="hidden" id="update_action_id" value="">
+    </body>
+</html>

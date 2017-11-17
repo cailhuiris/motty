@@ -1,0 +1,82 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div id="action-edit-form" class="columns">
+    <div class="column col-6 col-sm-12 col-mx-auto">
+        <div class="columns">
+            <div class="column col-12 col-mx-auto">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        Create new action on the <span class="text-primary">User</span> resource.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column col-8 col-sm-12">
+                <div class="form-group">
+                    <input type="text" class="form-input title-input" placeholder="Title!">
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">/user/</span>
+                        <input type="text" class="form-input url-input" placeholder="new_url">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column col-4 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">Method</label>
+                            <select class="form-select">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                                <option value="PATCH">PATCH</option>
+                                <option value="COPY">COPY</option>
+                                <option value="HEAD">HEAD</option>
+                                <option value="OPTIONS">OPTIONS</option>
+                                <option value="LINK">LINK</option>
+                                <option value="UNLINK">UNLINK</option>
+                                <option value="PURGE">PURGE</option>
+                                <option value="LOCK">LOCK</option>
+                                <option value="UNLOCK">UNLOCK</option>
+                                <option value="PROFIND">PROFIND</option>
+                                <option value="VIEW">VIEW</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column col-8 col-sm-12">
+                        <div class="form-group form-group-gap">
+                            <label class="form-label">Content-Type</label>
+                            <select class="form-select">
+                                <option value="">Text</option>
+                                <option value="text/plain">Text (text/plain)</option>
+                                <option value="application/json">JSON (application/json)</option>
+                                <option value="application/javascript">Javascript (application/javascript)</option>
+                                <option value="application/xml">XML (application/xml)</option>
+                                <option value="text/xml">XML (text/xml)</option>
+                                <option value="text/html">HTML (text/html)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-response-area">
+                    <span class="response-label">Response</span>
+                    <div id="response" class="codeview" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
+            <div class="column tools col-4 col-sm-12 col-ml-auto">
+                <button type="button" class="btn btn-block btn-primary"><i class="ion ion-compose"></i>Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var flask = new CodeFlask;
+    flask.run('#response', {
+        language: 'js'
+    });
+    flask.update('Type response here.');
+</script>
+{% endblock %}

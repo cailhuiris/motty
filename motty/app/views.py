@@ -15,12 +15,15 @@ from .serializers import ActionSerializer
 
 import json
 
-# main view
+# views
 def main(request):
     return redirect(index)
 
 def index(request):
     return render(request, 'app/index.html')
+
+def create_action_view(request):
+    return render(request,'app/action/create.html')
 
 # api requests.
 @api_view(['GET'])

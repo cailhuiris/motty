@@ -1,33 +1,5 @@
-@mixin transition($transition...) {
-    -moz-transition:    $transition;
-    -o-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
-}
-@mixin transition-property($property...) {
-    -moz-transition-property:    $property;
-    -o-transition-property:      $property;
-    -webkit-transition-property: $property;
-    transition-property:         $property;
-}
-@mixin transition-duration($duration...) {
-    -moz-transition-property:    $duration;
-    -o-transition-property:      $duration;
-    -webkit-transition-property: $duration;
-    transition-property:         $duration;
-}
-@mixin transition-timing-function($timing...) {
-    -moz-transition-timing-function:    $timing;
-    -o-transition-timing-function:      $timing;
-    -webkit-transition-timing-function: $timing;
-    transition-timing-function:         $timing;
-}
-@mixin transition-delay($delay...) {
-    -moz-transition-delay:    $delay;
-    -o-transition-delay:      $delay;
-    -webkit-transition-delay: $delay;
-    transition-delay:         $delay;
-}
+@import '_transition.scss';
+@import '_editor_highlight.scss';
 
 $main-color: #337AF6;
 $background-color: #F3F5F8;
@@ -227,115 +199,41 @@ footer {
     }
 }
 
-#create-action-form {
-    padding-top:20px;
-    button {
-        cursor: pointer;
+#action-edit-form {
+    .title-input {
+        font-size: 20px;
     }
-    .form-label {
-        color: lighten($default-text-color, 30);
-        font-weight: 400;
-    }
-    input[type=text].form-control {
-        border: none;
-        border-bottom: 1px solid lighten($default-text-color, 50);
-        border-radius: 0;
-    }
-}
 
-#view-action-dialog {
-    margin-top:8px;
-    padding: 0 15px;
-    .view-header {
-        span.method-label {
-            font-size: 14px;
-            padding: 3px 8px;
-            height: 30px;
-        }
+    .url-input {
+        color: $text-primary;
     }
-    .view-name {
-        margin-top:12px;
-        h4 {
-            display:inline-block;
-            font-size: 20px;
-            color: $default-text-color;
-        }
-        span.url {
-            font-size: 14px;
-            color: lighten($default-text-color, 20);
+
+    .select-box {
+        margin:0px;
+        .form-group-gap {
             margin-left: 10px;
         }
-        .btn {
-            display: inline-block;
-            margin-left: 10px;
-            margin-top: -1px;
-            font-size: 12px;
-            height: 30px;
-            &:focus {
-                box-shadow:none;
-            }
-            i {
-                margin-right: 7px;
-            }
-        }
     }
-    .view-body {
+
+    .type-response-area {
         margin-top: 20px;
-        span.content-type {
-            display:inline-block;
-            padding: 2px 10px 3px 10px;
-            background: #ECEEF1;
-            color: #878E95;
-            font-size: 14px;
+        .response-label {
+            display:block;
+            padding: 5px 0;
+        }
+        #response {
+            border: 1px solid #caced7;
         }
     }
-    .content {
-        pre {
-            width: 100%;
-            background: #f8f8f8;
-            margin: 0px;
+
+    button {
+        .ion {
+            margin-right: 8px;
         }
-    }
-    .alert-info {
-        font-size: 14px;
-        padding: 5px 10px;
     }
 }
 
 /* components */
 .btn {
     cursor: pointer;
-}
-
-.method-label {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 5px;
-    margin:0;
-    border-radius: 3px;
-    text-align: center;
-
-    &.method-label-get {
-        color: $label-green;
-        background: $label-green-bg;
-    }
-
-    &.method-label-post {
-        color: $label-yellow;
-        background: $label-yellow-bg;
-    }
-
-    &.method-label-put {
-        color: $label-blue;
-        background: $label-blue-bg;
-    }
-
-    &.method-label-delete {
-        color: $label-red;
-        background: $label-red-bg;
-    }
-}
-
-.ngdialog.ngdialog-theme-default .ngdialog-content {
-    background: #fff;
 }

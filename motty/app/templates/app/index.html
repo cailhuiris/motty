@@ -1,184 +1,143 @@
-{% load staticfiles sass_tags %}
-<!DOCTYPE html>
-<html ng-app="motty">
-    <head>
-        <title>Motty - Modern web tools that create fake responses.</title>
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/spectre/css/spectre.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ionicons/css/ionicons.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/notify/animate.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/highlight/styles/github.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% sass_src 'styles/main.scss' %}" />
-        <script type="text/javascript" src="{% static '/plugins/jquery/jquery-3.2.1.slim.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/popper/popper.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/notify/bootstrap-notify.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/ng-dialog/js/ngDialog.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/highlight/highlight.pack.js' %}"></script>
-        <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <a href="/" id="logo"><img src="{% static '/images/mask.png' %}" title="logo" />Motty</a>
+{% extends 'app/base.html'%}
+
+{% block content %}
+<div class="tools columns">
+    <div class="column col-9 col-sm-12 col-mx-auto">
+        <div class="columns">
+            <div class="col-9 col-sm-12">
+                <button type="button" id="new-resource-btn" class="btn"><i class="ion ion-plus"></i>New Resource</button>
             </div>
-        </header>
-        <div id="body">
-            <div class="container">
-                <div class="tools columns">
-                    <div class="column col-9 col-sm-12 col-mx-auto">
-                        <div class="columns">
-                            <div class="col-9 col-sm-12">
-                                <button type="button" id="new-resource-btn" class="btn"><i class="ion ion-plus"></i>New Resource</button>
-                            </div>
-                            <div class="col-3 col-sm-12">
-                                <div class="input-group">
-                                    <input type="text" class="form-input" placeholder="Search by name." />
-                                    <button class="btn"><i class="ion ion-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="resource_list" class="columns">
-                    <div class="resource column col-9 col-sm-12 col-mx-auto">
-                        <div class="resource_head">
-                            <h4>Root resource</h4>
-                            <span>/</span>
-                            <button type="button" class="btn"><i class="ion ion-compose"></i></button>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="action_list columns">
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card">
-                                    <div class="card-header">
-                                        <div class="card-title h5">Fetch all users.</div>
-                                        <div class="card-subtitle url">https://localhost:7000/users</div>
-                                    </div>
-                                    <div class="columns card-footer">
-                                        <div class="col-9">
-                                            <div class="card-tags">
-                                                <span class="chip">GET</span>
-                                                <span class="chip">json</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card">
-                                    <div class="card-header">
-                                        <div class="card-title h5">Fetch all users.</div>
-                                        <div class="card-subtitle url">https://localhost:7000/users</div>
-                                    </div>
-                                    <div class="columns card-footer">
-                                        <div class="col-9">
-                                            <div class="card-tags">
-                                                <span class="chip">GET</span>
-                                                <span class="chip">json</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card">
-                                    <div class="card-header">
-                                        <div class="card-title h5">Fetch all users.</div>
-                                        <div class="card-subtitle url">https://localhost:7000/users</div>
-                                    </div>
-                                    <div class="columns card-footer">
-                                        <div class="col-9">
-                                            <div class="card-tags">
-                                                <span class="chip">POST</span>
-                                                <span class="chip">text</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card">
-                                    <div class="card-header">
-                                        <div class="card-title h5">Fetch all users.</div>
-                                        <div class="card-subtitle url">https://localhost:7000/users</div>
-                                    </div>
-                                    <div class="columns card-footer">
-                                        <div class="col-9">
-                                            <div class="card-tags">
-                                                <span class="chip">GET</span>
-                                                <span class="chip">json</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resource column col-9 col-sm-12 col-mx-auto">
-                        <div class="resource_head">
-                            <h4>User</h4>
-                            <span>/user</span>
-                            <button type="button" class="btn"><i class="ion ion-compose"></i></button>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="action_list columns">
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card">
-                                    <div class="card-header">
-                                        <div class="card-title h5">Fetch all users.</div>
-                                        <div class="card-subtitle url">https://localhost:7000/users</div>
-                                    </div>
-                                    <div class="columns card-footer">
-                                        <div class="col-9">
-                                            <div class="card-tags">
-                                                <span class="chip">GET</span>
-                                                <span class="chip">json</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column col-3 col-sm-12">
-                                <a href="#" class="card create-new-card">
-                                    <div class="card-header">
-                                        <i class="ion ion-plus"></i>
-                                        <h4>Create new url</h4>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resource column col-9 col-sm-12 col-mx-auto">
-                        <div class="create_resource_head columns">
-                                <div class="col-3 col-sm-12">
-                                    <input type="text" class="form-input new-resource-input" placeholder="New Resource!">
-                                </div>
-                                <div class="col-2 col-sm-12">
-                                    <input type="text" class="form-input new-url-input" placeholder="type url here.">
-                                </div>
-                                <div class="col-2 col-sm-12">
-                                    <button type="button" class="btn btn-primary">Save</button>
-                                </div>
-                        </div> 
-                        <div class="divider"></div>
-                    </div>
+            <div class="col-3 col-sm-12">
+                <div class="input-group">
+                    <input type="text" class="form-input" placeholder="Search by name." />
+                    <button class="btn"><i class="ion ion-search"></i></button>
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="container">
-                <div id="whoiam">
-                    <a href="https://github.com/scalalang2" target="_blank">
-                        <img src="{% static '/images/github.png' %}" id="github-logo" title="github" />
-                        <span>scalalang2</span>
-                    </a>
-                    / since 11. 2017.
-                </div>
+    </div>
+</div>
+<div id="resource_list" class="columns">
+    <div class="resource column col-9 col-sm-12 col-mx-auto">
+        <div class="resource_head">
+            <h4>Root resource</h4>
+            <span>/</span>
+            <button type="button" data-tooltip="Modify this resource." class="btn tooltip"><i class="ion ion-compose"></i></button>
+        </div>
+        <div class="divider"></div>
+        <div class="action_list columns">
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card">
+                    <div class="card-header">
+                        <div class="card-title h5">Fetch all users.</div>
+                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                    </div>
+                    <div class="columns card-footer">
+                        <div class="col-9">
+                            <div class="card-tags">
+                                <span class="chip">GET</span>
+                                <span class="chip">json</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </footer>
-        <input type="hidden" id="update_action_id" value="">
-    </body>
-</html>
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card">
+                    <div class="card-header">
+                        <div class="card-title h5">Fetch all users.</div>
+                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                    </div>
+                    <div class="columns card-footer">
+                        <div class="col-9">
+                            <div class="card-tags">
+                                <span class="chip">GET</span>
+                                <span class="chip">json</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card">
+                    <div class="card-header">
+                        <div class="card-title h5">Fetch all users.</div>
+                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                    </div>
+                    <div class="columns card-footer">
+                        <div class="col-9">
+                            <div class="card-tags">
+                                <span class="chip">POST</span>
+                                <span class="chip">text</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card">
+                    <div class="card-header">
+                        <div class="card-title h5">Fetch all users.</div>
+                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                    </div>
+                    <div class="columns card-footer">
+                        <div class="col-9">
+                            <div class="card-tags">
+                                <span class="chip">GET</span>
+                                <span class="chip">json</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="resource column col-9 col-sm-12 col-mx-auto">
+        <div class="resource_head">
+            <h4>User</h4>
+            <span>/user</span>
+            <button type="button" class="btn"><i class="ion ion-compose"></i></button>
+        </div>
+        <div class="divider"></div>
+        <div class="action_list columns">
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card">
+                    <div class="card-header">
+                        <div class="card-title h5">Fetch all users.</div>
+                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                    </div>
+                    <div class="columns card-footer">
+                        <div class="col-9">
+                            <div class="card-tags">
+                                <span class="chip">GET</span>
+                                <span class="chip">json</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="column col-3 col-sm-12">
+                <a href="#" class="card create-new-card">
+                    <div class="card-header">
+                        <i class="ion ion-plus"></i>
+                        <h4>Create new url</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="resource column col-9 col-sm-12 col-mx-auto">
+        <div class="create_resource_head columns">
+                <div class="col-3 col-sm-12">
+                    <input type="text" class="form-input new-resource-input" placeholder="New Resource!">
+                </div>
+                <div class="col-2 col-sm-12">
+                    <input type="text" class="form-input new-url-input" placeholder="type url here.">
+                </div>
+                <div class="col-2 col-sm-12">
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+        </div> 
+        <div class="divider"></div>
+    </div>
+</div>
+{% endblock %}
