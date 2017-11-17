@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     url(r'^app/$', views.index, name = "index_view"),
     url(r'^app/action/create', views.create_action_view, name='create_action_view'),
+    url(r'^app/action/([0-9]{1,})/view', views.action_view, name='action_view'),
 
     url(r'^motty/api/actions', views.actions, name = "actions"),
     url(r'^motty/api/action$', views.create_new_action, name = "create_new_action"),

@@ -25,6 +25,9 @@ def index(request):
 def create_action_view(request):
     return render(request,'app/action/create.html')
 
+def action_view(request, id):
+    return render(request, 'app/action/view.html')
+
 # api requests.
 @api_view(['GET'])
 def actions(request):

@@ -82,6 +82,26 @@ footer .container #whoiam a img { width: 20px; height: 16px; }
 
 #action-edit-form button .ion { margin-right: 8px; }
 
+#action-view .breadcrumb-item a { color: #5755d9; text-decoration: underline; }
+
+#action-view .detail .detail-header { margin-top: 10px; }
+
+#action-view .detail .detail-header h3 { display: inline-block; margin: 0px; font-size: 20px; }
+
+#action-view .detail .detail-header .url { color: #5755d9; }
+
+#action-view .detail .detail-chips { margin-top: 10px; }
+
+#action-view .response-area { margin-top: 30px; }
+
+#action-view .response-area pre { margin: 5px 0 0 0; }
+
+#action-view .response-area pre code { color: #50596c; background: none; }
+
+#action-view .tools .btn .ion { margin-right: 8px; }
+
+#action-view .tools .btn.btn-danger { border-color: #d3d2f5; color: #807fe2; }
+
 /* components */
 .btn { cursor: pointer; }
 

@@ -233,6 +233,51 @@ footer {
     }
 }
 
+#action-view {
+    .breadcrumb-item a {
+        color: $text-primary;
+        text-decoration: underline;
+    }
+    .detail {
+        .detail-header {
+            margin-top: 10px;
+            h3 {
+                display: inline-block;
+                margin: 0px;
+                font-size: 20px;
+            }
+            .url {
+                color: $text-primary;
+            }
+        }
+        .detail-chips {
+            margin-top: 10px;
+        } 
+    }
+    .response-area {
+        margin-top: 30px;
+
+        pre {
+            margin: 5px 0 0 0;
+            code {
+                color: $default-text-color;
+                background: none;
+            }
+        }
+    }
+    .tools {
+        .btn {
+            .ion {
+                margin-right: 8px;
+            }
+            &.btn-danger {
+                border-color: lighten($text-primary, 30);
+                color: lighten($text-primary, 10);
+            }
+        }
+    }
+}
+
 /* components */
 .btn {
     cursor: pointer;
