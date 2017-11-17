@@ -20,7 +20,7 @@ def run_motty():
         application = get_wsgi_application()
         container = tornado.wsgi.WSGIContainer(application)
 
-        print("Hi, motty is now running on http://localhost:7000/ \nYou can stop it by pressing Ctrl or Command + C on the keyboard.")
+        print("Hi, motty is now running on http://localhost:7000/ \nYou can terminate it by pressing Ctrl + C on the keyboard.")
 
         tornado_app = tornado.web.Application([
             (r'/static/(.*)', tornado.web.StaticFileHandler, { 'path':STATIC_ROOT }),
