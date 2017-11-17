@@ -1,7 +1,38 @@
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+
 $main-color: #337AF6;
 $background-color: #F3F5F8;
 $header-color: $main-color;
-$default-text-color: #4D5561;
+$default-text-color: #50596c;
 
 $label-green-bg: #DBF1DD;
 $label-green: #5D985D;
@@ -56,20 +87,125 @@ header {
     .container {
         text-align: center;
         #logo {
-            margin-top:10px;
-            width:40px;
-            height:40px;
+            position: relative;
+            display: inline-block;
+            margin-top:15px;
+            padding-left: 10px;
+            color: #fff;
+            @include transition(color, 0.3s);
+            img {
+                position: absolute;
+                top: 3px;
+                left: -30px;
+                width:30px;
+                height:30px;
+            }
+            &:hover {
+                color: $text-secondary;
+                text-decoration: none;
+            }
         }
     }
 }
 
 #body {
     margin-top: 20px;
+    .tools {
+        #new-resource-btn {
+            .ion {
+                margin-right: 8px;
+            }
+        }
+    }
 }
 
 #resource_list {
     .resource {
         margin-top: 20px;
+        .resource_head {
+            h4 {
+                margin: 0px;
+                display: inline-block;
+                font-size: 20px;
+            }
+            span {
+                display: inline-block;
+                color: $text-primary;
+                margin-left: 5px;
+            }
+            .btn {
+                border: none;
+                padding: 0 10px;
+            }
+        }
+        .divider {
+            margin: 0 0 0.4rem 0;
+        }
+        .create_resource_head {
+            margin: 0 0 10px 0;
+            .new-resource-input,
+            .new-url-input {
+                border-color: #fff;
+                &:hover {
+                    border-color: $text-primary;
+                }
+            }
+            .new-resource-input {
+                font-size: 20px;
+            }
+            .new-url-input {
+                margin-left: 5px;
+                color: $text-primary;
+            }
+            .btn {
+                margin-left: 10px;
+            }
+        }
+        /* product list */
+        .action_list .card {
+            color: $default-text-color;
+            @include transition(border-color 0.3s);
+
+            .card-title {
+                @include transition(color 0.3s);
+            }
+            .card-header {
+                .card-subtitle {
+                    color: lighten($default-text-color, 25);
+                    font-size: 12px;
+                }
+            }
+            &:hover {
+                text-decoration: none;
+                border-color: $text-primary;
+                .card-title {
+                    color: $text-primary;
+                }
+            }
+            &.create-new-card {
+                background: $bg-gray;
+                height: 126px;
+                .card-header {
+                    @include transition(color, 0.3s);
+                    text-align: center;
+                    color: lighten($default-text-color, 30);
+                     .ion {
+                        margin-top: 6px;
+                        font-size: 50px;
+                    }
+                    h4 {
+                        margin-top: 5px;
+                        font-weight: 400;
+                    }
+                }
+                &:hover {
+                    border-color: lighten($default-text-color, 20);
+                    .card-header {
+                        color: lighten($default-text-color, 20);
+                    }
+                }
+            }
+        }
     }
 }
 

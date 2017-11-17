@@ -1,114 +1,116 @@
-body {
-  font-size: 16px; }
+body { font-size: 16px; }
 
-header {
-  background: #5755d9;
-  height: 60px; }
-  header .container {
-    text-align: center; }
-    header .container #logo {
-      margin-top: 10px;
-      width: 40px;
-      height: 40px; }
+header { background: #5755d9; height: 60px; }
 
-#body {
-  margin-top: 20px; }
+header .container { text-align: center; }
 
-#resource_list .resource {
-  margin-top: 20px; }
+header .container #logo { position: relative; display: inline-block; margin-top: 15px; padding-left: 10px; color: #fff; -moz-transition: color, 0.3s; -o-transition: color, 0.3s; -webkit-transition: color, 0.3s; transition: color, 0.3s; }
 
-footer .container {
-  padding: 10px 0 60px 0;
-  text-align: center;
-  font-size: 12px; }
-  footer .container #whoiam {
-    color: #b5bbc5; }
-    footer .container #whoiam a {
-      color: #b5bbc5; }
-      footer .container #whoiam a img {
-        width: 20px;
-        height: 16px; }
+header .container #logo img { position: absolute; top: 3px; left: -30px; width: 30px; height: 30px; }
 
-#create-action-form {
-  padding-top: 20px; }
-  #create-action-form button {
-    cursor: pointer; }
-  #create-action-form .form-label {
-    color: #99a1ae;
-    font-weight: 400; }
-  #create-action-form input[type=text].form-control {
-    border: none;
-    border-bottom: 1px solid #d2d6db;
-    border-radius: 0; }
+header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 
-#view-action-dialog {
-  margin-top: 8px;
-  padding: 0 15px; }
-  #view-action-dialog .view-header span.method-label {
-    font-size: 14px;
-    padding: 3px 8px;
-    height: 30px; }
-  #view-action-dialog .view-name {
-    margin-top: 12px; }
-    #view-action-dialog .view-name h4 {
-      display: inline-block;
-      font-size: 20px;
-      color: #4D5561; }
-    #view-action-dialog .view-name span.url {
-      font-size: 14px;
-      color: #7d8797;
-      margin-left: 10px; }
-    #view-action-dialog .view-name .btn {
-      display: inline-block;
-      margin-left: 10px;
-      margin-top: -1px;
-      font-size: 12px;
-      height: 30px; }
-      #view-action-dialog .view-name .btn:focus {
-        box-shadow: none; }
-      #view-action-dialog .view-name .btn i {
-        margin-right: 7px; }
-  #view-action-dialog .view-body {
-    margin-top: 20px; }
-    #view-action-dialog .view-body span.content-type {
-      display: inline-block;
-      padding: 2px 10px 3px 10px;
-      background: #ECEEF1;
-      color: #878E95;
-      font-size: 14px; }
-  #view-action-dialog .content pre {
-    width: 100%;
-    background: #f8f8f8;
-    margin: 0px; }
-  #view-action-dialog .alert-info {
-    font-size: 14px;
-    padding: 5px 10px; }
+#body { margin-top: 20px; }
+
+#body .tools #new-resource-btn .ion { margin-right: 8px; }
+
+#resource_list .resource { margin-top: 20px; /* product list */ }
+
+#resource_list .resource .resource_head h4 { margin: 0px; display: inline-block; font-size: 20px; }
+
+#resource_list .resource .resource_head span { display: inline-block; color: #5755d9; margin-left: 5px; }
+
+#resource_list .resource .resource_head .btn { border: none; padding: 0 10px; }
+
+#resource_list .resource .divider { margin: 0 0 0.4rem 0; }
+
+#resource_list .resource .create_resource_head { margin: 0 0 10px 0; }
+
+#resource_list .resource .create_resource_head .new-resource-input, #resource_list .resource .create_resource_head .new-url-input { border-color: #fff; }
+
+#resource_list .resource .create_resource_head .new-resource-input:hover, #resource_list .resource .create_resource_head .new-url-input:hover { border-color: #5755d9; }
+
+#resource_list .resource .create_resource_head .new-resource-input { font-size: 20px; }
+
+#resource_list .resource .create_resource_head .new-url-input { margin-left: 5px; color: #5755d9; }
+
+#resource_list .resource .create_resource_head .btn { margin-left: 10px; }
+
+#resource_list .resource .action_list .card { color: #50596c; -moz-transition: border-color 0.3s; -o-transition: border-color 0.3s; -webkit-transition: border-color 0.3s; transition: border-color 0.3s; }
+
+#resource_list .resource .action_list .card .card-title { -moz-transition: color 0.3s; -o-transition: color 0.3s; -webkit-transition: color 0.3s; transition: color 0.3s; }
+
+#resource_list .resource .action_list .card .card-header .card-subtitle { color: #8f99ac; font-size: 12px; }
+
+#resource_list .resource .action_list .card:hover { text-decoration: none; border-color: #5755d9; }
+
+#resource_list .resource .action_list .card:hover .card-title { color: #5755d9; }
+
+#resource_list .resource .action_list .card.create-new-card { background: #f8f9fa; height: 126px; }
+
+#resource_list .resource .action_list .card.create-new-card .card-header { -moz-transition: color, 0.3s; -o-transition: color, 0.3s; -webkit-transition: color, 0.3s; transition: color, 0.3s; text-align: center; color: #9ea6b7; }
+
+#resource_list .resource .action_list .card.create-new-card .card-header .ion { margin-top: 6px; font-size: 50px; }
+
+#resource_list .resource .action_list .card.create-new-card .card-header h4 { margin-top: 5px; font-weight: 400; }
+
+#resource_list .resource .action_list .card.create-new-card:hover { border-color: #818ba1; }
+
+#resource_list .resource .action_list .card.create-new-card:hover .card-header { color: #818ba1; }
+
+footer .container { padding: 10px 0 60px 0; text-align: center; font-size: 12px; }
+
+footer .container #whoiam { color: #bbc1cd; }
+
+footer .container #whoiam a { color: #bbc1cd; }
+
+footer .container #whoiam a img { width: 20px; height: 16px; }
+
+#create-action-form { padding-top: 20px; }
+
+#create-action-form button { cursor: pointer; }
+
+#create-action-form .form-label { color: #9ea6b7; font-weight: 400; }
+
+#create-action-form input[type=text].form-control { border: none; border-bottom: 1px solid #d9dce2; border-radius: 0; }
+
+#view-action-dialog { margin-top: 8px; padding: 0 15px; }
+
+#view-action-dialog .view-header span.method-label { font-size: 14px; padding: 3px 8px; height: 30px; }
+
+#view-action-dialog .view-name { margin-top: 12px; }
+
+#view-action-dialog .view-name h4 { display: inline-block; font-size: 20px; color: #50596c; }
+
+#view-action-dialog .view-name span.url { font-size: 14px; color: #818ba1; margin-left: 10px; }
+
+#view-action-dialog .view-name .btn { display: inline-block; margin-left: 10px; margin-top: -1px; font-size: 12px; height: 30px; }
+
+#view-action-dialog .view-name .btn:focus { box-shadow: none; }
+
+#view-action-dialog .view-name .btn i { margin-right: 7px; }
+
+#view-action-dialog .view-body { margin-top: 20px; }
+
+#view-action-dialog .view-body span.content-type { display: inline-block; padding: 2px 10px 3px 10px; background: #ECEEF1; color: #878E95; font-size: 14px; }
+
+#view-action-dialog .content pre { width: 100%; background: #f8f8f8; margin: 0px; }
+
+#view-action-dialog .alert-info { font-size: 14px; padding: 5px 10px; }
 
 /* components */
-.btn {
-  cursor: pointer; }
+.btn { cursor: pointer; }
 
-.method-label {
-  display: inline-block;
-  font-size: 11px;
-  padding: 2px 5px;
-  margin: 0;
-  border-radius: 3px;
-  text-align: center; }
-  .method-label.method-label-get {
-    color: #5D985D;
-    background: #DBF1DD; }
-  .method-label.method-label-post {
-    color: #98985D;
-    background: #F0F1DB; }
-  .method-label.method-label-put {
-    color: #5D7E98;
-    background: #DBE8F1; }
-  .method-label.method-label-delete {
-    color: #985D5D;
-    background: #F1DBDB; }
+.method-label { display: inline-block; font-size: 11px; padding: 2px 5px; margin: 0; border-radius: 3px; text-align: center; }
 
-.ngdialog.ngdialog-theme-default .ngdialog-content {
-  background: #fff; }
+.method-label.method-label-get { color: #5D985D; background: #DBF1DD; }
+
+.method-label.method-label-post { color: #98985D; background: #F0F1DB; }
+
+.method-label.method-label-put { color: #5D7E98; background: #DBE8F1; }
+
+.method-label.method-label-delete { color: #985D5D; background: #F1DBDB; }
+
+.ngdialog.ngdialog-theme-default .ngdialog-content { background: #fff; }
 
 /*# sourceMappingURL=../../../../../../../../static/styles/main.css.map */

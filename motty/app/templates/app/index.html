@@ -22,16 +22,16 @@
     <body>
         <header>
             <div class="container">
-                <a href="/"><img src="{% static '/images/mask.png' %}" id="logo" title="logo" />Motty</a>
+                <a href="/" id="logo"><img src="{% static '/images/mask.png' %}" title="logo" />Motty</a>
             </div>
         </header>
         <div id="body">
             <div class="container">
-                <div class="columns">
+                <div class="tools columns">
                     <div class="column col-9 col-sm-12 col-mx-auto">
                         <div class="columns">
                             <div class="col-9 col-sm-12">
-                                <button class="btn"><i class="ion ion-plus"></i>New Resource</button>
+                                <button type="button" id="new-resource-btn" class="btn"><i class="ion ion-plus"></i>New Resource</button>
                             </div>
                             <div class="col-3 col-sm-12">
                                 <div class="input-group">
@@ -52,7 +52,7 @@
                         <div class="divider"></div>
                         <div class="action_list columns">
                             <div class="column col-3 col-sm-12">
-                                <div class="card">
+                                <a href="#" class="card">
                                     <div class="card-header">
                                         <div class="card-title h5">Fetch all users.</div>
                                         <div class="card-subtitle url">https://localhost:7000/users</div>
@@ -64,14 +64,11 @@
                                                 <span class="chip">json</span>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
-                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="column col-3 col-sm-12">
-                                <div class="card">
+                                <a href="#" class="card">
                                     <div class="card-header">
                                         <div class="card-title h5">Fetch all users.</div>
                                         <div class="card-subtitle url">https://localhost:7000/users</div>
@@ -83,14 +80,11 @@
                                                 <span class="chip">json</span>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
-                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="column col-3 col-sm-12">
-                                <div class="card">
+                                <a href="#" class="card">
                                     <div class="card-header">
                                         <div class="card-title h5">Fetch all users.</div>
                                         <div class="card-subtitle url">https://localhost:7000/users</div>
@@ -102,14 +96,11 @@
                                                 <span class="chip">text</span>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
-                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="column col-3 col-sm-12">
-                                <div class="card">
+                                <a href="#" class="card">
                                     <div class="card-header">
                                         <div class="card-title h5">Fetch all users.</div>
                                         <div class="card-subtitle url">https://localhost:7000/users</div>
@@ -121,11 +112,8 @@
                                                 <span class="chip">json</span>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
-                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -138,7 +126,7 @@
                         <div class="divider"></div>
                         <div class="action_list columns">
                             <div class="column col-3 col-sm-12">
-                                <div class="card">
+                                <a href="#" class="card">
                                     <div class="card-header">
                                         <div class="card-title h5">Fetch all users.</div>
                                         <div class="card-subtitle url">https://localhost:7000/users</div>
@@ -150,27 +138,30 @@
                                                 <span class="chip">json</span>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-right">
-                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
-                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="column col-3 col-sm-12">
                                 <a href="#" class="card create-new-card">
                                     <div class="card-header">
-                                        <i class="ion ion-plus-circled"></i>
-                                        Create new url.
+                                        <i class="ion ion-plus"></i>
+                                        <h4>Create new url</h4>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="resource column col-9 col-sm-12 col-mx-auto">
-                        <div class="resource_head">
-                            <input type="text" class="form-input new-resource-input" placeholder="New Resource!">
-                            <input type="text" class="form-input new-url-input" placeholder="type url here.">
-                            <button type="button" class="btn btn-primary">Save</button>
+                        <div class="create_resource_head columns">
+                                <div class="col-3 col-sm-12">
+                                    <input type="text" class="form-input new-resource-input" placeholder="New Resource!">
+                                </div>
+                                <div class="col-2 col-sm-12">
+                                    <input type="text" class="form-input new-url-input" placeholder="type url here.">
+                                </div>
+                                <div class="col-2 col-sm-12">
+                                    <button type="button" class="btn btn-primary">Save</button>
+                                </div>
                         </div> 
                         <div class="divider"></div>
                     </div>
