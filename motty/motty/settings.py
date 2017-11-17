@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'compressor'
+    'compressor',
+    'sass_processor'
 ]
 
 MIDDLEWARE = [
@@ -51,11 +52,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
+    'sass_processor.finders.CssFinder',
+]
 
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
@@ -131,4 +132,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'app/static')
+
+SASS_PROCESSOR_ENABLED = True
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(BASE_DIR, 'app/static/styles'),
+]
+
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'app/static')
+
+SASS_PRECISION = 8
+
+SASS_OUTPUT_STYLE = 'compact'
 

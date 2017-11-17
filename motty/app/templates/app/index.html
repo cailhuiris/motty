@@ -1,24 +1,18 @@
-{% load staticfiles compress %}
+{% load staticfiles sass_tags %}
 <!DOCTYPE html>
 <html ng-app="motty">
     <head>
         <title>Motty - Modern web tools that create fake responses.</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/plugins/spectre/css/spectre.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ionicons/css/ionicons.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/bootstrap/css/bootstrap-grid.min.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static '/plugins/select2-4.0.5/css/select2.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/ng-dialog/css/ngDialog-theme-default.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/notify/animate.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static '/plugins/highlight/styles/github.css' %}" />
-        {% compress css %}
-            <link rel="stylesheet" type="text/x-scss" href="{% static '/styles/main.scss' %}" />
-        {% endcompress %}
+        <link rel="stylesheet" type="text/css" href="{% sass_src 'styles/main.scss' %}" />
         <script type="text/javascript" src="{% static '/plugins/jquery/jquery-3.2.1.slim.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/popper/popper.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/notify/bootstrap-notify.min.js' %}"></script>
-        <script type="text/javascript" src="{% static '/plugins/select2-4.0.5/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/angularjs/1.6.6/angular-resource.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/ng-dialog/js/ngDialog.min.js' %}"></script>
@@ -28,57 +22,157 @@
     <body>
         <header>
             <div class="container">
-                <img src="{% static '/images/mask.png' %}" id="logo" title="logo" />
+                <a href="/"><img src="{% static '/images/mask.png' %}" id="logo" title="logo" />Motty</a>
             </div>
         </header>
-        <div id="body" class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="tools row" ng-controller="Tools.ctrl">
-                        <div id="total-responses" class="col-md-4">
-                            Base URL<br />http://localhost:8000/motty/base/
-                        </div>
-                        <div class="col-md-8 text-right">
-                            <a href="" id="new-button" class="btn btn-primary" ng-click="openCreateForm()">
-                                <i class="ion ion-plus"></i>
-                                New Response
-                            </a>
-                            <button class="btn btn-light" ng-disabled="actions.length == 0" ng-if="!is_deleting" ng-click="prepareToDelete()">
-                                <i class="ion ion-trash-a"></i>
-                                Select to delete
-                            </button>
-                            <button id="delete-actions" class="btn btn-danger" ng-if="is_deleting" ng-click="delete()">
-                                <i class="ion ion-trash-a"></i>
-                                Delete!
-                            </button>
-                            <button class="btn btn-light" ng-if="is_deleting" ng-click="cancel()">
-                                <i class="ion ion-ios-close-outline"></i>
-                                Cancel
-                            </button>
+        <div id="body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column col-9 col-sm-12 col-mx-auto">
+                        <div class="columns">
+                            <div class="col-9 col-sm-12">
+                                <button class="btn"><i class="ion ion-plus"></i>New Resource</button>
+                            </div>
+                            <div class="col-3 col-sm-12">
+                                <div class="input-group">
+                                    <input type="text" class="form-input" placeholder="Search by name." />
+                                    <button class="btn"><i class="ion ion-search"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="responses row" ng-controller="ActionList.ctrl">
-                        <div class="col-md-12" id="when-no-data" ng-if="actions.length == 0">
-                            <img src="{% static '/images/guide1.png' %}" id="guide-image" title="Let's start motty!" />
-                            <img src="{% static '/images/empty_data.png' %}" id="no-data-image" title="No Data Y.Y, You can add your own response." />
+                <div id="resource_list" class="columns">
+                    <div class="resource column col-9 col-sm-12 col-mx-auto">
+                        <div class="resource_head">
+                            <h4>Root resource</h4>
+                            <span>/</span>
+                            <button type="button" class="btn"><i class="ion ion-compose"></i></button>
                         </div>
-                        <div class="col-md-4" ng-repeat="action in actions">
-                            <input type="checkbox" ng-if="is_deleting" ng-model="action.isToDelete">
-                            <a href="" class="response-item" ng-click="showDetail($index)">
-                                <div class="response-header">
-                                    <h4 ng-bind="action.name"></h4>
-                                    <span class="method-label method-label-post" ng-if="action.method == 'POST'">POST</span>
-                                    <span class="method-label method-label-get" ng-if="action.method == 'GET'">GET</span>
-                                    <span class="method-label method-label-put" ng-if="action.method == 'PUT'">PUT</span>
-                                    <span class="method-label method-label-delete" ng-if="action.method == 'DELETE'">DELETE</span>
+                        <div class="divider"></div>
+                        <div class="action_list columns">
+                            <div class="column col-3 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title h5">Fetch all users.</div>
+                                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                                    </div>
+                                    <div class="columns card-footer">
+                                        <div class="col-9">
+                                            <div class="card-tags">
+                                                <span class="chip">GET</span>
+                                                <span class="chip">json</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="url" ng-bind="action.url"></div>
-                            </a>
+                            </div>
+                            <div class="column col-3 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title h5">Fetch all users.</div>
+                                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                                    </div>
+                                    <div class="columns card-footer">
+                                        <div class="col-9">
+                                            <div class="card-tags">
+                                                <span class="chip">GET</span>
+                                                <span class="chip">json</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column col-3 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title h5">Fetch all users.</div>
+                                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                                    </div>
+                                    <div class="columns card-footer">
+                                        <div class="col-9">
+                                            <div class="card-tags">
+                                                <span class="chip">POST</span>
+                                                <span class="chip">text</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column col-3 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title h5">Fetch all users.</div>
+                                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                                    </div>
+                                    <div class="columns card-footer">
+                                        <div class="col-9">
+                                            <div class="card-tags">
+                                                <span class="chip">GET</span>
+                                                <span class="chip">json</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="resource column col-9 col-sm-12 col-mx-auto">
+                        <div class="resource_head">
+                            <h4>User</h4>
+                            <span>/user</span>
+                            <button type="button" class="btn"><i class="ion ion-compose"></i></button>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="action_list columns">
+                            <div class="column col-3 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title h5">Fetch all users.</div>
+                                        <div class="card-subtitle url">https://localhost:7000/users</div>
+                                    </div>
+                                    <div class="columns card-footer">
+                                        <div class="col-9">
+                                            <div class="card-tags">
+                                                <span class="chip">GET</span>
+                                                <span class="chip">json</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-right">
+                                            <button type="button" class="btn"><i class="ion ion-trash-a"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column col-3 col-sm-12">
+                                <a href="#" class="card create-new-card">
+                                    <div class="card-header">
+                                        <i class="ion ion-plus-circled"></i>
+                                        Create new url.
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resource column col-9 col-sm-12 col-mx-auto">
+                        <div class="resource_head">
+                            <input type="text" class="form-input new-resource-input" placeholder="New Resource!">
+                            <input type="text" class="form-input new-url-input" placeholder="type url here.">
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div> 
+                        <div class="divider"></div>
                     </div>
                 </div>
             </div>
