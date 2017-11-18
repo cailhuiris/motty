@@ -16,7 +16,7 @@ Python>=3.0 is required, so you should install python 3 before proceeding next s
 **You must not jump up this step** <br>
 cause motty have permission issues, <br>
 so it cannot access system library folders like /usr/bin. <br><br>
-This is why motty have to be installed in home directory. <br>
+This is why motty have to be installed inside home directory. <br>
 Afterward, if we can solve this issue, We'll keep you updated <br><br>
 
 > $ pip3 install virtualenv <br>
