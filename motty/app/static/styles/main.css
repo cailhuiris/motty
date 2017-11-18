@@ -1,3 +1,11 @@
+.token.prolog, .token.tag, .token.punctuation { color: #5755d9; }
+
+.token.attr-value, .token.string { color: #32b643; }
+
+.token.number { color: #e85600; }
+
+.token.attr-name { color: #50596c; }
+
 body { font-size: 16px; }
 
 header { background: #5755d9; height: 60px; }
@@ -35,6 +43,8 @@ header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 #resource_list .resource .create_resource_head .new-url-input { margin-left: 5px; color: #5755d9; }
 
 #resource_list .resource .create_resource_head .btn { margin-left: 10px; }
+
+#resource_list .resource .create_resource_head .btn .ion { margin-right: 7px; }
 
 #resource_list .resource .action_list .card { color: #50596c; -moz-transition: border-color 0.3s; -o-transition: border-color 0.3s; -webkit-transition: border-color 0.3s; transition: border-color 0.3s; }
 

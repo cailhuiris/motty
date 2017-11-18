@@ -6,13 +6,17 @@ urlpatterns = [
     url(r'^app/action/create', views.create_action_view, name='create_action_view'),
     url(r'^app/action/([0-9]{1,})/view', views.action_view, name='action_view'),
 
-    url(r'^motty/api/actions', views.actions, name = "actions"),
-    url(r'^motty/api/action$', views.create_new_action, name = "create_new_action"),
-    url(r'^motty/api/action/([0-9]{1,})$', views.get_action, name = "get_action"),
-    url(r'^motty/api/action/([0-9]{1,})/edit$', views.edit_action, name = "edit_action"),
-    url(r'^motty/api/action/([0-9]{1,})/delete$', views.delete_action, name = "delete_action"),
-    url(r'^motty/api/action/delete/all$', views.delete_all, name = "delete_all"),
+    # resource api
+    url(r'^motty/api/resources', views.resources, name="api_resources"),
+    url(r'^motty/api/resource$', views.save_resource, name="api_save_resource"),
+    url(r'^motty/api/resource/([0-9]{1,})/delete', views.delete_resource, name="api_delete_resource"),
 
+    # action api
+    url(r'^motty/api/action$', views.save_action, name = "api_save_action"),
+    url(r'^motty/api/action/([0-9]{1,})$', views.get_action, name = "api_get_action"),
+    url(r'^motty/api/action/([0-9]{1,})/delete$', views.delete_action, name = "api_delete_action"),
+
+    # producing resource api
     url(r'^motty/base/(.+)', views.return_fake_request, name = "return_fake_request"),
 
     url(r'', views.main, name = "main"),

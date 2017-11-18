@@ -10,8 +10,8 @@ from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
 
 from .utils import remove_last_slash
-from .models import Action
-from .serializers import ActionSerializer
+from .models import Action, Resource
+from .serializers import ActionSerializer, ResourceSerializer
 
 import json
 
@@ -29,43 +29,63 @@ def action_view(request, id):
     return render(request, 'app/action/view.html')
 
 # api requests.
+# resource api
 @api_view(['GET'])
-def actions(request):
-    actions = Action.objects.values()
-    serializer = ActionSerializer(actions, many=True)
-    return JsonResponse(serializer.data, safe=False);
+def resources(request):
+    resource = Resource.objects.all()
+    serializer = ResourceSerializer(resource, many=True)
 
+    for idx, res in enumerate(serializer.data):
+        for act_idx, act in enumerate(serializer.data[idx]['actions']):
+            action = Action.objects.get(pk=act)
+            action_serializer = ActionSerializer(action)
+            serializer.data[idx]['actions'][act_idx] = action_serializer.data
+
+    return JsonResponse(serializer.data, safe=False)
+
+@api_view(['GET'])
+def delete_resource(request, id):
+    try:
+        resource = Resource.objects.get(pk=id)
+        resource.delete()
+
+        return HttpResponse('The resource number {0} is successfully deleted'.format(id))
+    except ObjectDoesNotExist:
+        return HttpResponse('No resoruce to delete.', status=404)
+
+@api_view(['POST'])
+def save_resource(request):
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+        resource = Resource() if data.get('id') is None else Resource.objects.get(pk=data['id'])
+        serializer = ResourceSerializer(resource, data=data) if data.get('id') is None else \
+            ResourceSerializer(resource, data=data, partial=True)
+
+        if serializer.is_valid() :
+            serializer.save()
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return JsonResponse(serializer.errors, status=400)
+    except ObjectDoesNotExist:
+        return HttpResponse("No resource to save.", status=404 )
+
+# action api
 @csrf_exempt
 @api_view(['POST'])
-def create_new_action(request):
-    data = json.loads(request.body.decode('utf-8'))
-    serializer = ActionSerializer(data=data)
-    if serializer.is_valid() :
-        action = serializer.save()
-        return JsonResponse(serializer.data, safe=False)
-    else:
-        return JsonResponse(serializer.errors, status=400)
+def save_action(request):
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+        action = Action() if data.get('id') is None else Action.objects.get(pk=data['id'])
+        serializer = ActionSerializer(action, data=data) if data.get('id') is None else \
+            ActionSerializer(action, data=data, partial=True)
 
-@csrf_exempt
-@api_view(['POST'])
-def edit_action(request, id):
-    data = json.loads(request.body.decode('utf-8'))
-    serializer = ActionSerializer(data=data)
-    if serializer.is_valid() :
-        _action = serializer.data
-        try:
-            action = Action.objects.get(pk=id)
-            action.name = _action['name']
-            action.url = _action['url']
-            action.method = _action['method']
-            action.contentType = _action['contentType']
-            action.body = _action['body']
-            action.save()
-            return HttpResponse('data is successfully saved.')
-        except ObjectDoesNotExist:
-            return HttpResponse('There is no data to udpate.', status=404)
-    else:
-        return JsonResponse(serializer.errors, status=400)
+        if serializer.is_valid() :
+            action = serializer.save()
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return JsonResponse(serializer.errors, status=400)
+    except ObjectDoesNotExist:
+        return HttpResponse("No action to save.", status=404)
 
 @api_view(['GET'])
 def delete_action(request, id):

@@ -11,7 +11,7 @@ class Resource(models.Model):
 
 class Action(models.Model):
     '''Action produces responses to client, and all actions are managed by resource.'''
-    resource = models.ForeignKey(Resource, null=False)
+    resource = models.ForeignKey(Resource, null=False, related_name='actions')
     name = models.CharField(max_length=30)
     url = models.CharField(max_length=50)
     method = models.CharField(max_length=50)

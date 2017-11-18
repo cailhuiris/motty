@@ -1,0 +1,18 @@
+.token.prolog,
+.token.tag,
+.token.punctuation {
+    color: $text-primary;
+}
+
+.token.attr-value,
+.token.string {
+    color: $text-success;
+}
+
+.token.number {
+    color: $text-error;
+}
+
+.token.attr-name {
+    color: $default-text-color;
+}
