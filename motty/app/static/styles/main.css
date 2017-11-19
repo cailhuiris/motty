@@ -18,9 +18,9 @@ header .container #logo img { position: absolute; top: 3px; left: -30px; width: 
 
 header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 
-#body { margin-top: 20px; }
+.btn.icon-and-text .ion { margin-right: 8px; }
 
-#body .tools #new-resource-btn .ion { margin-right: 8px; }
+#body { margin-top: 20px; }
 
 #resource_list .resource { margin-top: 20px; /* product list */ }
 
@@ -29,6 +29,8 @@ header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 #resource_list .resource .resource_head span { display: inline-block; color: #5755d9; margin-left: 5px; }
 
 #resource_list .resource .resource_head .btn { border: none; padding: 0 10px; }
+
+#resource_list .resource .resource_head a.btn { padding: 7px 10px 0 10px; }
 
 #resource_list .resource .divider { margin: 0 0 0.4rem 0; }
 
@@ -43,8 +45,6 @@ header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 #resource_list .resource .create_resource_head .new-url-input { margin-left: 5px; color: #5755d9; }
 
 #resource_list .resource .create_resource_head .btn { margin-left: 10px; }
-
-#resource_list .resource .create_resource_head .btn .ion { margin-right: 7px; }
 
 #resource_list .resource .action_list .card { color: #50596c; -moz-transition: border-color 0.3s; -o-transition: border-color 0.3s; -webkit-transition: border-color 0.3s; transition: border-color 0.3s; }
 
@@ -90,8 +90,6 @@ footer .container #whoiam a img { width: 20px; height: 16px; }
 
 #action-edit-form .type-response-area #response { border: 1px solid #caced7; }
 
-#action-edit-form button .ion { margin-right: 8px; }
-
 #action-view .breadcrumb-item a { color: #5755d9; text-decoration: underline; }
 
 #action-view .detail .detail-header { margin-top: 10px; }
@@ -107,8 +105,6 @@ footer .container #whoiam a img { width: 20px; height: 16px; }
 #action-view .response-area pre { margin: 5px 0 0 0; }
 
 #action-view .response-area pre code { color: #50596c; background: none; }
-
-#action-view .tools .btn .ion { margin-right: 8px; }
 
 #action-view .tools .btn.btn-danger { border-color: #d3d2f5; color: #807fe2; }
 

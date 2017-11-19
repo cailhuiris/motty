@@ -35,15 +35,12 @@ header {
     }
 }
 
+.btn.icon-and-text .ion {
+    margin-right: 8px;
+}
+
 #body {
     margin-top: 20px;
-    .tools {
-        #new-resource-btn {
-            .ion {
-                margin-right: 8px;
-            }
-        }
-    }
 }
 
 #resource_list {
@@ -63,6 +60,9 @@ header {
             .btn {
                 border: none;
                 padding: 0 10px;
+            }
+            a.btn {
+                padding: 7px 10px 0 10px;
             }
         }
         .divider {
@@ -86,9 +86,6 @@ header {
             }
             .btn {
                 margin-left: 10px;
-                .ion {
-                    margin-right: 7px; 
-                }
             }
         }
         /* product list */
@@ -183,12 +180,6 @@ footer {
             border: 1px solid #caced7;
         }
     }
-
-    button {
-        .ion {
-            margin-right: 8px;
-        }
-    }
 }
 
 #action-view {
@@ -225,9 +216,6 @@ footer {
     }
     .tools {
         .btn {
-            .ion {
-                margin-right: 8px;
-            }
             &.btn-danger {
                 border-color: lighten($text-primary, 30);
                 color: lighten($text-primary, 10);

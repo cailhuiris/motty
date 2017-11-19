@@ -5,10 +5,10 @@
     <div class="tools columns">
         <div class="column col-9 col-sm-12 col-mx-auto">
             <div class="columns">
-                <div class="col-9 col-sm-12">
-                    <button type="button" ng-disabled="is_creating_resource" ng-click="createResource()" id="new-resource-btn" class="btn btn-primary"><i class="ion ion-plus"></i>New Resource</button>
+                <div class="column col-9 col-sm-12">
+                    <button type="button" ng-disabled="is_creating_resource" ng-click="createResource()" id="new-resource-btn" class="btn btn-primary icon-and-text"><i class="ion ion-plus"></i>New Resource</button>
                 </div>
-                <div class="col-3 col-sm-12">
+                <div class="column col-3 col-sm-12">
                     <div class="input-group">
                         <input type="text" class="form-input" placeholder="Search by name." />
                         <button class="btn"><i class="ion ion-search"></i></button>
@@ -22,8 +22,8 @@
             <div class="resource_head">
                 <h4 ng-bind="resource.name"></h4>
                 <span ng-bind="resource.url">/</span>
-                <button type="button" ng-if="resource.id != 1" data-tooltip="Modify this resource." class="btn tooltip"><i class="ion ion-compose"></i></button>
-                <button type="button" ng-if="resource.id != 1" data-tooltip="Delete this resource." class="btn tooltip"><i class="ion ion-trash-a"></i></button>
+                <button type="button" ng-if="resource.id != 1" ng-click="modifyResource($index)" data-tooltip="Modify this resource." class="btn tooltip"><i class="ion ion-compose"></i></button>
+                <a href="#deleteModal" ng-if="resource.id != 1" ng-click="askDelete($index)" data-tooltip="Delete this resource." class="btn tooltip"><i class="ion ion-trash-a"></i></a>
             </div>
             <div class="divider"></div>
             <div class="action_list columns">
@@ -62,11 +62,30 @@
                     <input type="text" class="form-input new-url-input" ng-model="newResource.url" placeholder="type url here.">
                 </div>
                 <div class="col-7 col-sm-12">
-                    <button type="button" class="btn btn-primary" ng-click="saveNewResource()"><i class="ion ion-compose"></i>Save</button>
-                    <button type="button" class="btn" ng-click="cancelCreating()"><i class="ion ion-close"></i>Cancel</button>
+                    <button type="button" class="btn btn-primary icon-and-text" ng-click="saveNewResource()"><i class="ion ion-compose"></i>Save</button>
+                    <button type="button" class="btn icon-and-text" ng-click="cancelCreating()"><i class="ion ion-close"></i>Cancel</button>
                 </div>
             </div> 
             <div class="divider"></div>
+        </div>
+    </div>
+    <div id="deleteModal" class="modal">
+        <a href="/" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a href="/" class="btn btn-clear float-right" aria-label="Close"></a>
+                <div class="modal-title h5">Delete Resource</div>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <b>Are you sure you want to delete <span class="text-primary" ng-bind="targetResource.name"></span> resource? </b><br>
+                    <span class="text-gray">All actions belong to User resource will be deleted.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary icon-and-text" ng-click="yesDelete()"><ion class="ion ion-trash-a"></ion>Yes, Delete</button>
+                <a href="/" class="btn icon-and-text"><ion class="ion ion-close"></ion>No</a>
+            </div>
         </div>
     </div>
 </div>

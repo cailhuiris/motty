@@ -32,6 +32,8 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     $scope.newResource = { name: "", url: "" }
     $scope.resources = [];
 
+    $scope.targetResource = {};
+
     Resources.get(function(res){
         $scope.resources = res;
     });
@@ -50,5 +52,15 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     $scope.cancelCreating = function() {
         $scope.is_creating_resource = false;
         $scope.newResource = { name: "", url: "" }
+    }
+
+    $scope.askDelete = function($idx){
+        $scope.targetResource = $scope.resources[$idx];
+    }
+
+    $scope.yesDelete = function(){
+        Resource.delete({id : $scope.targetResource.id}, function(){
+            location.href = '/';
+        });
     }
 });
