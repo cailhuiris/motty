@@ -32,12 +32,13 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     $scope.newResource = { name: "", url: "" }
     $scope.resources = [];
 
-    $scope.targetResource = {};
+    $scope._dtarget = {};
 
     Resources.get(function(res){
         $scope.resources = res;
     });
 
+    /* creating resource */
     $scope.saveNewResource = function() {
         Resource.save($scope.newResource, function(resource){
             $scope.resources.push(resource);
@@ -54,12 +55,31 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
         $scope.newResource = { name: "", url: "" }
     }
 
+    /* modifying resource */
+    $scope.prepareToModify = function($idx){
+        $scope._mtarget = $scope.resources[$idx];
+    }
+
+    $scope.modify = function($idx){
+        Resource.save({ id: "" }, $scope._mtarget, function(resource){
+            console.log(resource);
+            $scope.resources[$idx].name = resource.name;
+            $scope.resources[$idx].url = resource.url;
+            $scope.cancelModifying();
+        });
+    }
+
+    $scope.cancelModifying = function(){
+        $scope._mtarget = {};
+    }
+
+    /* about deleting */
     $scope.askDelete = function($idx){
-        $scope.targetResource = $scope.resources[$idx];
+        $scope._dtarget = $scope.resources[$idx];
     }
 
     $scope.yesDelete = function(){
-        Resource.delete({id : $scope.targetResource.id}, function(){
+        Resource.delete({id : $scope._dtarget.id}, function(){
             location.href = '/';
         });
     }

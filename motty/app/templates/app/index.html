@@ -18,12 +18,25 @@
         </div>
     </div>
     <div id="resource_list" class="columns">
+        <!-- resource list -->
         <div class="resource column col-9 col-sm-12 col-mx-auto" ng-repeat="resource in resources">
-            <div class="resource_head">
+            <div class="resource_head" ng-if="_mtarget.id != resource.id">
                 <h4 ng-bind="resource.name"></h4>
                 <span ng-bind="resource.url">/</span>
-                <button type="button" ng-if="resource.id != 1" ng-click="modifyResource($index)" data-tooltip="Modify this resource." class="btn tooltip"><i class="ion ion-compose"></i></button>
+                <button type="button" ng-if="resource.id != 1" ng-click="prepareToModify($index)" data-tooltip="Modify this resource." class="btn tooltip"><i class="ion ion-compose"></i></button>
                 <a href="#deleteModal" ng-if="resource.id != 1" ng-click="askDelete($index)" data-tooltip="Delete this resource." class="btn tooltip"><i class="ion ion-trash-a"></i></a>
+            </div>
+            <div class="create_resource_head columns" ng-if="_mtarget.id == resource.id">
+                <div class="col-3 col-sm-12">
+                    <input type="text" class="form-input new-resource-input" ng-model="_mtarget.name" placeholder="New Resource!">
+                </div>
+                <div class="col-2 col-sm-12">
+                    <input type="text" class="form-input new-url-input" ng-model="_mtarget.url" placeholder="type url here.">
+                </div>
+                <div class="col-7 col-sm-12">
+                    <button type="button" class="btn btn-primary icon-and-text" ng-click="modify($index)"><i class="ion ion-compose"></i>Save</button>
+                    <button type="button" class="btn icon-and-text" ng-click="cancelModifying()"><i class="ion ion-close"></i>Cancel</button>
+                </div>
             </div>
             <div class="divider"></div>
             <div class="action_list columns">
@@ -53,6 +66,8 @@
                 </div>
             </div>
         </div>
+        <!-- // resource list end -->
+        <!-- resource creation form -->
         <div class="resource column col-9 col-sm-12 col-mx-auto" ng-if="is_creating_resource">
             <div class="create_resource_head columns">
                 <div class="col-3 col-sm-12">
@@ -68,7 +83,9 @@
             </div> 
             <div class="divider"></div>
         </div>
+        <!-- // resource creation form end -->
     </div>
+    <!-- resource delete modal -->
     <div id="deleteModal" class="modal">
         <a href="/" class="modal-overlay" aria-label="Close"></a>
         <div class="modal-container">
@@ -78,8 +95,8 @@
             </div>
             <div class="modal-body">
                 <div class="content">
-                    <b>Are you sure you want to delete <span class="text-primary" ng-bind="targetResource.name"></span> resource? </b><br>
-                    <span class="text-gray">All actions belong to User resource will be deleted.</span>
+                    <b>Are you sure you want to delete <span class="text-primary" ng-bind="_dtarget.name"></span> resource? </b><br>
+                    <span class="text-gray">All actions belong to [[ _dtarget.name ]] resource will be deleted.</span>
                 </div>
             </div>
             <div class="modal-footer">
@@ -88,5 +105,6 @@
             </div>
         </div>
     </div>
+    <!-- // resource delete modal end -->
 </div>
 {% endblock %}
