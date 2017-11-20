@@ -93,9 +93,11 @@ def delete_resource(request, id):
         resource = Resource.objects.get(pk=id)
         resource.delete()
 
-        return HttpResponse('The resource number {0} is successfully deleted'.format(id))
+        messages.info(request, "The '{0}' resource is successfully deleted.".format(resource.name))
+        return redirect('index_view')
     except ObjectDoesNotExist:
-        return HttpResponse('No resoruce to delete.', status=404)
+        messages.info(request, "No resource to delete.")
+        return redirect('index_view')
 
 @api_view(['POST'])
 def save_resource(request):

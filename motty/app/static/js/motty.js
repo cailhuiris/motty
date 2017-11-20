@@ -77,12 +77,6 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     $scope.askDelete = function($idx){
         $scope._dtarget = $scope.resources[$idx];
     }
-
-    $scope.yesDelete = function(){
-        Resource.delete({id : $scope._dtarget.id}, function(){
-            location.href = '/';
-        });
-    }
 });
 
 app.controller('EditActionForm.ctrl', function($scope){
