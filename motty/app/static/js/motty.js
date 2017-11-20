@@ -84,3 +84,48 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
         });
     }
 });
+
+app.controller('EditActionForm.ctrl', function($scope){
+    $scope.contentTypes = [
+        { value: '', name:'Text' },
+        { value: 'application/json', name:'JSON (application/json)' },
+        { value: 'application/javascript', name:'Javascript (application/javascript)' },
+        { value: 'application/xml', name:'XML (application/xml)' },
+        { value: 'text/xml', name:'XML (text/xml)' },
+        { value: 'text/html', name:'HTML (text/html)' },
+    ];
+
+    $scope.contentType = '';
+
+    var flask = new CodeFlask;
+
+    $scope.changeContentType = function(){
+        if($scope.contentType == 'application/json' || $scope.contentType == 'application/javascript') {
+            flask.run('#response', {
+                language: 'javascript'
+            });
+        } else if($scope.contentType == 'application/xml' 
+           || $scope.contentType == 'text/xml'
+           || $scope.contentType == 'text/html') {
+            flask.run('#response', {
+                language: 'html'
+            });
+        } else {
+            flask.run('#response', {
+                language: 'text'
+            });
+        }
+
+        var body = $("input[name=body]").val()
+        if(body != '')
+            flask.update(body)
+        else
+            flask.update('Type response here.');
+
+        flask.onUpdate(function(code){
+            $("input[name=body]").val(code);
+        });
+    }
+
+    $scope.changeContentType();
+});

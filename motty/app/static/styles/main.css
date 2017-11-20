@@ -6,6 +6,8 @@
 
 .token.attr-name { color: #50596c; }
 
+.toast { border-radius: 0px; }
+
 body { font-size: 16px; }
 
 header { background: #5755d9; height: 60px; }

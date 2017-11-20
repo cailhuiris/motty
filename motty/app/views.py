@@ -1,8 +1,9 @@
 from rest_framework.decorators import api_view
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 
 from django.forms.models import model_to_dict
 from django.db import connection
@@ -22,8 +23,23 @@ def main(request):
 def index(request):
     return render(request, 'app/index.html')
 
-def create_action_view(request):
-    return render(request,'app/action/create.html')
+@api_view(['GET', 'POST'])
+def create_action(request, resource_id):
+    resource = Resource.objects.get(pk=resource_id)
+
+    if request.method == 'GET':
+        return render(request,'app/action/create.html', { 'resource': resource })
+    else:
+        body = request.data
+        action = Action()
+        serializer = ActionSerializer(action, data=body);
+
+        if serializer.is_valid():
+            serializer.save()
+            messages.info(request, "The '{0}' action is successfully created.".format(body.get('name')))
+            return redirect('index_view')
+        else:
+            return render(request, 'app/action/create.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
 
 def action_view(request, id):
     return render(request, 'app/action/view.html')
@@ -70,22 +86,22 @@ def save_resource(request):
         return HttpResponse("No resource to save.", status=404 )
 
 # action api
-@csrf_exempt
-@api_view(['POST'])
-def save_action(request):
-    try:
-        data = json.loads(request.body.decode('utf-8'))
-        action = Action() if data.get('id') is None else Action.objects.get(pk=data['id'])
-        serializer = ActionSerializer(action, data=data) if data.get('id') is None else \
-            ActionSerializer(action, data=data, partial=True)
+# @csrf_exempt
+# @api_view(['POST'])
+# def save_action(request):
+#     try:
+#         data = json.loads(request.body.decode('utf-8'))
+#         action = Action() if data.get('id') is None else Action.objects.get(pk=data['id'])
+#         serializer = ActionSerializer(action, data=data) if data.get('id') is None else \
+#             ActionSerializer(action, data=data, partial=True)
 
-        if serializer.is_valid() :
-            action = serializer.save()
-            return JsonResponse(serializer.data, safe=False)
-        else:
-            return JsonResponse(serializer.errors, status=400)
-    except ObjectDoesNotExist:
-        return HttpResponse("No action to save.", status=404)
+#         if serializer.is_valid() :
+#             action = serializer.save()
+#             return JsonResponse(serializer.data, safe=False)
+#         else:
+#             return JsonResponse(serializer.errors, status=400)
+#     except ObjectDoesNotExist:
+#         return HttpResponse("No action to save.", status=404)
 
 @api_view(['GET'])
 def delete_action(request, id):

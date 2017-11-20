@@ -21,6 +21,7 @@
         <script type="text/javascript" src="{% static '/plugins/codeflask/prism.min.js' %}"></script>
         <script type="text/javascript" src="{% static '/plugins/codeflask/codeflask.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/motty.js' %}"></script>
+        <script type="text/javascript" src="{% static '/js/utils.js' %}"></script>
     </head>
     <body>
         <header>
@@ -28,6 +29,8 @@
                 <a href="/" id="logo"><img src="{% static '/images/mask.png' %}" title="logo" />Motty</a>
             </div>
         </header>
+        {% block toast %}
+        {% endblock %}
         <div id="body">
             <div class="container">
                 {% block content %}

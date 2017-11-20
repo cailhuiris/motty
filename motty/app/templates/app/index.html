@@ -1,5 +1,20 @@
 {% extends 'app/base.html'%}
 
+{% block toast %}
+{% if messages %}
+    {% for message in messages%}
+    <div class="toast container">
+        <div class="columns">
+            <div class="column col-9 col-mx-auto">
+                <button class="btn btn-clear float-right"></button>
+                {{ message | escape }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div ng-controller="ResourceList.ctrl">
     <div class="tools columns">
@@ -41,7 +56,7 @@
             <div class="divider"></div>
             <div class="action_list columns">
                 <div class="column col-3 col-sm-12" ng-repeat="action in resource.actions">
-                    <a href="/app/action/[[ action.id ]]/view" class="card tooltip tooltip-top" data-tooltip="[[ action.contentType ]]">
+                    <a href="/motty/action/[[ action.id ]]/view" class="card tooltip tooltip-top" data-tooltip="[[ action.contentType ]]">
                         <div class="card-header">
                             <div class="card-title h5" ng-bind="action.name"></div>
                             <div class="card-subtitle url">[[ resource.url ]][[ action.url ]]</div>
@@ -57,7 +72,7 @@
                     </a>
                 </div>
                 <div class="column col-3 col-sm-12">
-                    <a href="{% url 'create_action_view' %}" class="card create-new-card">
+                    <a href="/motty/resource/[[ resource.id ]]/action/create" class="card create-new-card">
                         <div class="card-header">
                             <i class="ion ion-plus"></i>
                             <h4>Create new url</h4>
