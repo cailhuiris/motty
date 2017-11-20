@@ -34,7 +34,7 @@ header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 
 #resource_list .resource .resource_head a.btn { padding: 7px 10px 0 10px; }
 
-#resource_list .resource .divider { margin: 0 0 0.4rem 0; }
+#resource_list .resource .divider { margin: 0; }
 
 #resource_list .resource .create_resource_head { margin: 0 0 10px 0; }
 
@@ -48,7 +48,7 @@ header .container #logo:hover { color: #e5e5f9; text-decoration: none; }
 
 #resource_list .resource .create_resource_head .btn { margin-left: 10px; }
 
-#resource_list .resource .action_list .card { color: #50596c; -moz-transition: border-color 0.3s; -o-transition: border-color 0.3s; -webkit-transition: border-color 0.3s; transition: border-color 0.3s; }
+#resource_list .resource .action_list .card { margin-top: 10px; color: #50596c; -moz-transition: border-color 0.3s; -o-transition: border-color 0.3s; -webkit-transition: border-color 0.3s; transition: border-color 0.3s; }
 
 #resource_list .resource .action_list .card .card-title { -moz-transition: color 0.3s; -o-transition: color 0.3s; -webkit-transition: color 0.3s; transition: color 0.3s; }
 

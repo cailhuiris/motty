@@ -45,7 +45,7 @@ def save_action(request, resource_id, action_id=None):
 
         if serializer.is_valid():
             serializer.save()
-            messages.info(request, "The '{0}' action is successfully created.".format(body.get('name')))
+            messages.info(request, "The '{0}' action is successfully saved.".format(body.get('name')))
             return redirect('index_view')
         else:
             return render(request, 'app/action/form.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
@@ -83,6 +83,7 @@ def resources(request):
             action = Action.objects.get(pk=act)
             action_serializer = ActionSerializer(action)
             serializer.data[idx]['actions'][act_idx] = action_serializer.data
+            serializer.data[idx]['actions'][act_idx]['readableType'] = to_readable_type(action_serializer.data['contentType'])
 
     return JsonResponse(serializer.data, safe=False)
 
@@ -132,3 +133,6 @@ def get_editor_type(content_type):
         return 'xml';
     
     return 'text';
+
+def to_readable_type(content_type):
+    return get_editor_type(content_type).upper();

@@ -70,7 +70,7 @@ header {
             }
         }
         .divider {
-            margin: 0 0 0.4rem 0;
+            margin: 0;
         }
         .create_resource_head {
             margin: 0 0 10px 0;
@@ -94,6 +94,7 @@ header {
         }
         /* product list */
         .action_list .card {
+            margin-top: 10px;
             color: $default-text-color;
             @include transition(border-color 0.3s);
 
