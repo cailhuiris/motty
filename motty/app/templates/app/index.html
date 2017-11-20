@@ -18,7 +18,7 @@
 {% block content %}
 <div ng-controller="ResourceList.ctrl">
     <div class="tools columns">
-        <div class="column col-9 col-sm-12 col-mx-auto">
+        <div class="column col-9 col-lg-12 col-mx-auto">
             <div class="columns">
                 <div class="column col-12">
                     <button type="button" ng-disabled="is_creating_resource" ng-click="createResource()" id="new-resource-btn" class="btn btn-primary icon-and-text"><i class="ion ion-plus"></i>New Resource</button>
@@ -28,7 +28,7 @@
     </div>
     <div id="resource_list" class="columns">
         <!-- resource list -->
-        <div class="resource column col-9 col-sm-12 col-mx-auto" ng-repeat="resource in resources">
+        <div class="resource column col-9 col-lg-12 col-mx-auto" ng-repeat="resource in resources">
             <div class="resource_head" ng-if="_mtarget.id != resource.id">
                 <h4 ng-bind="resource.name"></h4>
                 <span ng-bind="resource.url">/</span>
@@ -49,7 +49,7 @@
             </div>
             <div class="divider"></div>
             <div class="action_list columns">
-                <div class="column col-3 col-sm-12" ng-repeat="action in resource.actions">
+                <div class="column col-3 col-lg-6 col-sm-12" ng-repeat="action in resource.actions">
                     <a href="/motty/action/[[ action.id ]]/view" class="card tooltip tooltip-top" data-tooltip="[[ action.contentType ]]">
                         <div class="card-header">
                             <div class="card-title h5" ng-bind="action.name"></div>
@@ -65,7 +65,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="column col-3 col-sm-12">
+                <div class="column col-3 col-lg-6 col-sm-12">
                     <a href="/motty/resource/[[ resource.id ]]/action/create" class="card create-new-card">
                         <div class="card-header">
                             <i class="ion ion-plus"></i>
