@@ -39,23 +39,25 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     });
 
     /* creating resource */
+    $scope.resource_error_handler = function(errors){
+        if(errors.data.name) {
+            toast(errors.data.name[0]);
+            $('.new-resource-input').focus();
+            return;
+        }
+
+        if(errors.data.url) {
+            toast(errors.data.url[0]);
+            $('.new-url-input').focus();
+            return;
+        }
+    };
+
     $scope.saveNewResource = function() {
         Resource.save($scope.newResource, function(resource){
             $scope.resources.push(resource);
             $scope.cancelCreating();
-        }, function(errors){
-            if(errors.data.name) {
-                toast(errors.data.name[0]);
-                $('.new-resource-input').focus();
-                return;
-            }
-
-            if(errors.data.url) {
-                toast(errors.data.url[0]);
-                $('.new-url-input').focus();
-                return;
-            }
-        });
+        }, $scope.resource_error_handler);
     }
 
     $scope.createResource = function() {
@@ -81,7 +83,7 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
             $scope.resources[$idx].name = resource.name;
             $scope.resources[$idx].url = resource.url;
             $scope.cancelModifying();
-        });
+        }, $scope.resource_error_handler);
     }
 
     $scope.cancelModifying = function(){
