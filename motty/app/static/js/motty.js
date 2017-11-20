@@ -86,6 +86,7 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
 });
 
 app.controller('EditActionForm.ctrl', function($scope){
+    var flask = new CodeFlask;
     $scope.contentTypes = [
         { value: '', name:'Text' },
         { value: 'application/json', name:'JSON (application/json)' },
@@ -96,8 +97,6 @@ app.controller('EditActionForm.ctrl', function($scope){
     ];
 
     $scope.contentType = '';
-
-    var flask = new CodeFlask;
 
     $scope.changeContentType = function(){
         if($scope.contentType == 'application/json' || $scope.contentType == 'application/javascript') {
@@ -128,4 +127,8 @@ app.controller('EditActionForm.ctrl', function($scope){
     }
 
     $scope.changeContentType();
+});
+
+app.controller('ActionView.ctrl', function($scope, Action){
+    
 });

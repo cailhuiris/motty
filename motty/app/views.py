@@ -42,7 +42,25 @@ def create_action(request, resource_id):
             return render(request, 'app/action/create.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
 
 def action_view(request, id):
-    return render(request, 'app/action/view.html')
+    action = Action.objects.get(pk=id)
+    data = model_to_dict(action)
+    data['resource'] = model_to_dict(Resource.objects.get(pk=data['resource']))
+    data['editorType'] = get_editor_type(data['contentType'])
+
+    return render(request, 'app/action/view.html', { 'id': id, 'action': data })
+
+@api_view(['GET'])
+def delete_action(request, id):
+    try:
+        action = Action.objects.get(pk=id)
+        name = action.name
+        action.delete()
+
+        messages.info(request, "The '{0}' action is deleted.".format(name))
+        return redirect('index_view')
+    except ObjectDoesNotExist:
+        messages.error(request, "No action to delete.")
+        return redirect('index_view')
 
 # api requests.
 # resource api
@@ -85,56 +103,23 @@ def save_resource(request):
     except ObjectDoesNotExist:
         return HttpResponse("No resource to save.", status=404 )
 
-# action api
-# @csrf_exempt
-# @api_view(['POST'])
-# def save_action(request):
-#     try:
-#         data = json.loads(request.body.decode('utf-8'))
-#         action = Action() if data.get('id') is None else Action.objects.get(pk=data['id'])
-#         serializer = ActionSerializer(action, data=data) if data.get('id') is None else \
-#             ActionSerializer(action, data=data, partial=True)
-
-#         if serializer.is_valid() :
-#             action = serializer.save()
-#             return JsonResponse(serializer.data, safe=False)
-#         else:
-#             return JsonResponse(serializer.errors, status=400)
-#     except ObjectDoesNotExist:
-#         return HttpResponse("No action to save.", status=404)
-
-@api_view(['GET'])
-def delete_action(request, id):
-    try:
-        action = Action.objects.get(pk=id)
-        action.delete()
-        return HttpResponse('deleted.')
-    except ObjectDoesNotExist:
-        return HttpResponse('There is no data to delete.')
-
-@csrf_exempt
-@api_view(['POST'])
-def delete_all(request):
-    res = json.loads(request.body.decode('utf-8'))
-    ids = res['ids']
-    with connection.cursor() as cursor:
-        cursor.execute('DELETE FROM app_action WHERE id in ' + "(" + ",".join(map(str, ids)) + ")")
-
-    return HttpResponse("your requests are successfully conducted.")
-
-
-@api_view(['GET'])
-def get_action(request, id):
-    action = Action.objects.get(pk=id)
-    return JsonResponse(model_to_dict(action))
-
 # fake responses.
 @csrf_exempt
 def return_fake_request(request, endpoint):
-    endpoint = "/" + endpoint
-    actions = Action.objects.filter(url=remove_last_slash(endpoint), method=request.method)
-    if len(actions) > 0:
-        action = actions[0]
-        return HttpResponse(action.body, content_type=action.contentType)
-    else:
-        return HttpResponse('No such response exists.', status=404)
+    return HttpResponse('Under construction.')
+
+def get_editor_type(content_type):
+    json_editors = ['application/json', 'application/javascript']
+    xml_editors = ['text/xml', 'application/xml']
+    html_editors = ['text/html']
+
+    if content_type in json_editors:
+        return 'json';
+
+    if content_type in xml_editors:
+        return 'xml';
+
+    if content_type in html_editors:
+        return 'xml';
+    
+    return 'text';

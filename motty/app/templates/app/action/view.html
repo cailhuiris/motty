@@ -1,7 +1,8 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<div id="action-view" class="columns">
+<div id="action-view" class="columns" ng-controller="ActionView.ctrl">
+    <input type="hidden" id="id" name="id" value="{{ id }}">
     <div class="column col-6 col-sm-12 col-mx-auto">
         <div class="columns">
             <div class="column col-12 col-mx-auto">
@@ -9,12 +10,8 @@
                     <li class="breadcrumb-item">
                         <a href="/">Resources</a>
                     </li>
-                    <li class="breadcrumb-item">
-                        User
-                    </li>
-                    <li class="breadcrumb-item">
-                        Create a user
-                    </li>
+                    <li class="breadcrumb-item">{{ action.resource.name }}</li>
+                    <li class="breadcrumb-item">{{ action.name }}</li>
                 </ul>
             </div>
         </div>
@@ -22,17 +19,17 @@
             <div class="column col-8 col-sm-12">
                 <div class="columns detail">
                     <div class="column col-12 detail-header">
-                        <h3>Create a user</h3>
-                        <span class="url">/user</span>
+                        <h3>{{ action.name }}</h3>
+                        <span class="url">{{ action.resource.url }}{{ action.url }}</span>
                     </div>
                     <div class="column col-12 detail-chips">
-                        <span class="chip">POST</span>
-                        <span class="chip">application-json</span>
+                        <span class="chip">{{ action.method }}</span>
+                        <span class="chip">{{ action.contentType }}</span>
                     </div>
                     <div class="column col-12">
                         <div class="response-area">
                             <label>Response</label>
-                            <pre id="response"><code class="json">{ "data": 1234 }</code></pre>                            
+                            <pre id="response"><code class="{{ action.editorType }}">{{ action.body }}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -42,19 +39,33 @@
                     <button type="button" class="btn btn-block btn-primary icon-and-text"><i class="ion ion-compose"></i>Edit</button>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-block btn-danger icon-and-text"><i class="ion ion-trash-a"></i>Delete</button>
+                    <a href="#deleteModal" class="btn btn-block btn-danger icon-and-text"><i class="ion ion-trash-a"></i>Delete</a>
                 </div>
-                {% comment %} <div class="form-group">
-                    <input type="text" class="form-input" placeholder="type action name">
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-block btn-danger" disabled><i class="ion ion-trash-a"></i>Delete</button>
-                </div> {% endcomment %}
             </div>
         </div>
     </div>
+    <!-- action delete modal -->
+    <div id="deleteModal" class="modal">
+        <a href="{% url 'action_view' action.id %}" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a href="/" class="btn btn-clear float-right" aria-label="Close"></a>
+                <div class="modal-title h5">Delete Action</div>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    Are you sure you want to delete the <b class="text-primary">{{ action.name }}</b> action?<br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'delete_action' action.id %}" class="btn btn-primary icon-and-text"><ion class="ion ion-trash-a"></ion>Yes, Delete</a>
+                <a href="{% url 'action_view' action.id %}" class="btn icon-and-text"><ion class="ion ion-close"></ion>No</a>
+            </div>
+        </div>
+    </div>
+    <!-- // resource delete modal end -->
 </div>
-<script>
+<script type="text/javascript">
     $("#response").each( function (i, block) {
         hljs.highlightBlock(block);
     });
