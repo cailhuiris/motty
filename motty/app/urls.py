@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     url(r'^motty/$', views.index, name = "index_view"),
-    url(r'^motty/resource/(?P<resource_id>[0-9]{1,})/action/create', views.create_action, name='create_action'),
+    url(r'^motty/resource/(?P<resource_id>[0-9]{1,})/action/create', views.save_action, name='create_action'),
+    url(r'^motty/resource/(?P<resource_id>[0-9]{1,})/action/(?P<action_id>[0-9]{1,})/save', views.save_action, name='edit_action'),
     url(r'^motty/action/([0-9]{1,})/view', views.action_view, name='action_view'),
     url(r'^motty/api/action/([0-9]{1,})/delete$', views.delete_action, name = "delete_action"),
 

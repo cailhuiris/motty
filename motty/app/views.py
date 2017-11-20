@@ -24,14 +24,23 @@ def index(request):
     return render(request, 'app/index.html')
 
 @api_view(['GET', 'POST'])
-def create_action(request, resource_id):
+def save_action(request, resource_id, action_id=None):
     resource = Resource.objects.get(pk=resource_id)
 
     if request.method == 'GET':
-        return render(request,'app/action/create.html', { 'resource': resource })
+        if action_id is None:
+            return render(request,'app/action/form.html', { 
+                        'resource': resource 
+                   })
+        else:
+            action = Action.objects.get(pk=action_id)
+            return render(request,'app/action/form.html', { 
+                        'resource': resource,
+                        'action': action
+                   })
     else:
         body = request.data
-        action = Action()
+        action = Action() if body.get('id') is None else Action.objects.get(pk=body.get('id'))
         serializer = ActionSerializer(action, data=body);
 
         if serializer.is_valid():
@@ -39,7 +48,7 @@ def create_action(request, resource_id):
             messages.info(request, "The '{0}' action is successfully created.".format(body.get('name')))
             return redirect('index_view')
         else:
-            return render(request, 'app/action/create.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
+            return render(request, 'app/action/form.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
 
 def action_view(request, id):
     action = Action.objects.get(pk=id)

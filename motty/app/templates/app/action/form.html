@@ -5,7 +5,14 @@
 <div class="columns" ng-controller="EditActionForm.ctrl">
     {% csrf_token %}
     <input type="hidden" name="resource" value="{{ resource.id }}">
-    <input type="hidden" name="body" value="{% if form.body %}{{ form.body }}{% endif %}">
+    <input type="hidden" name="body" 
+        {% if form.body %} value="{{ form.body }}" 
+        {% elif action.body %} value="{{ action.body }}"
+        {% else %} value="" {% endif %}
+        >
+    {% if action %}
+    <input type="hidden" name="id" value="{{ action.id }}">
+    {% endif %}
     <div class="column col-6 col-sm-12 col-mx-auto">
         <div class="columns">
             <div class="column col-12 col-mx-auto">
@@ -19,7 +26,10 @@
         <div class="columns">
             <div class="column col-8 col-sm-12">
                 <div class="form-group {% if errors.name %} has-error {% endif %}">
-                    <input type="text" name="name" class="form-input title-input" placeholder="Title!" {% if form.name %} value="{{ form.name }}" {% endif %}>
+                    <input type="text" name="name" class="form-input title-input" placeholder="Title!" 
+                        {% if form.name %} value="{{ form.name }}" 
+                        {% elif action.name %} value="{{ action.name }}"
+                        {% endif %}>
                     {% if errors.name %}
                         {% for error in errors.name %}
                             <p class="form-input-hint">{{ error|escape }}</p>
@@ -30,7 +40,10 @@
                     <label class="form-label">URL</label>
                     <div class="input-group">
                         <span class="input-group-addon">{{ resource.url }}</span>
-                        <input type="text" name="url" class="form-input url-input" value="{% if form.url %}{{ form.url }}{% endif %}">
+                        <input type="text" name="url" class="form-input url-input" 
+                            {% if form.url %} value="{{ form.url }}" 
+                            {% elif action.url %} value="{{ action.url}}"
+                            {% endif %}>
                     </div>
                     {% if errors.url %}
                         {% for error in errors.url %}
@@ -67,7 +80,8 @@
                             <select class="form-select" name="contentType" 
                                 ng-model="contentType" 
                                 ng-change="changeContentType()" 
-                                {% if form.contentType %} ng-init="contentType = '{{ form.contentType }}';changeContentType()" {% endif %}>
+                                {% if form.contentType %} ng-init="contentType = '{{ form.contentType }}';changeContentType()" 
+                                {% elif action.contentType %} ng-init="contentType = '{{ action.contentType }}';changeContentType()" {% endif %}>
                                 <option ng-repeat="c in contentTypes" value="[[ c.value ]]">[[ c.name ]]</option>
                             </select>
                         </div>
@@ -91,9 +105,11 @@
 </div>
 </form>
 <script type="text/javascript">
-    // do select value
-    {% if form.method %}
+// do select value
+{% if form.method %}
     select_value("select[name=method]", "{{ form.method }}");
-    {% endif %}
+{% elif action.method %}
+    select_value("select[name=method]", "{{ action.method }}");
+{% endif %}
 </script>
 {% endblock %}

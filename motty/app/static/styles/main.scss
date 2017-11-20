@@ -202,6 +202,14 @@ footer {
             .url {
                 color: $text-primary;
             }
+            .btn {
+                position: relative;
+                top: -1px;
+                padding: 5px 8px;
+                height: 30px;
+                border: none;
+                float:right;
+            }
         }
         .detail-chips {
             margin-top: 10px;
