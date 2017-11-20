@@ -48,6 +48,9 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
 
     $scope.createResource = function() {
         $scope.is_creating_resource = true;
+        $("body, html").animate({
+            scrollTop: $(document).height()
+        }, 400)        
     }
 
     $scope.cancelCreating = function() {
