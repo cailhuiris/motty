@@ -6,6 +6,12 @@
     border-radius: 0px;
 }
 
+.fixed {
+    position: fixed;
+    top:0;
+    z-index:9999;
+}
+
 body {
     font-size: 16px;
 }

@@ -43,6 +43,18 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
         Resource.save($scope.newResource, function(resource){
             $scope.resources.push(resource);
             $scope.cancelCreating();
+        }, function(errors){
+            if(errors.data.name) {
+                toast(errors.data.name[0]);
+                $('.new-resource-input').focus();
+                return;
+            }
+
+            if(errors.data.url) {
+                toast(errors.data.url[0]);
+                $('.new-url-input').focus();
+                return;
+            }
         });
     }
 
