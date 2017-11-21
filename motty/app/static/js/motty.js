@@ -70,6 +70,7 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
     $scope.cancelCreating = function() {
         $scope.is_creating_resource = false;
         $scope.newResource = { name: "", url: "" }
+        $('.toast').remove();
     }
 
     /* modifying resource */
@@ -88,6 +89,7 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
 
     $scope.cancelModifying = function(){
         $scope._mtarget = {};
+        $('.toast').remove();
     }
 
     /* about deleting */
