@@ -101,7 +101,7 @@ app.controller('ResourceList.ctrl', function($scope, Resources, Resource){
 app.controller('EditActionForm.ctrl', function($scope){
     var flask = new CodeFlask;
     $scope.contentTypes = [
-        { value: '', name:'Text' },
+        { value: 'plain/text', name:'Text' },
         { value: 'application/json', name:'JSON (application/json)' },
         { value: 'application/javascript', name:'Javascript (application/javascript)' },
         { value: 'application/xml', name:'XML (application/xml)' },

@@ -1,5 +1,20 @@
 {% extends 'app/base.html' %}
 
+{% block toast %}
+    {% if errors.non_field_errors %}
+        {% for message in errors.non_field_errors %}
+        <div class="toast container">
+            <div class="columns">
+                <div class="column col-9 col-mx-auto">
+                    <button class="btn btn-clear float-right"></button>
+                    {{ message | escape }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <form id="action-edit-form" action="{% url 'create_action' resource.id %}" method="post">
 <div class="columns" ng-controller="EditActionForm.ctrl">

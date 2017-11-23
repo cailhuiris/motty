@@ -9,11 +9,28 @@ class ActionSerializer(serializers.ModelSerializer):
         model = Action
         fields = ('id', 'resource', 'name', 'url', 'method', 'contentType', 'body', 'created_at')
 
-    def validate_url(self, value):
-        if value[0] != '/':
-            raise serializers.ValidationError("URL must star with '/', ex) '/all'")
+    def validate(self, data):
+        resource = data['resource']
+        url = data['url']
         
-        return value
+        if resource.url == '/':
+            if '/' in url:
+                raise serializers.ValidationError("Action url must have just one slash at the beginning of it.")
+            
+            combined = resource.url + url
+            resources = Resource.objects.filter(url=combined)
+            if len(resources) > 0 :
+                resource = resources[0]
+                raise serializers.ValidationError("This url is same with the `%s` resource's url, URL must be unique cross the app." % (resource.name))
+        else:
+            if resource.url != '/' and url[0] != '/':
+                raise serializers.ValidationError("Action url must start with '/', ex) '/all', '/1/product'")
+            
+            actions = Action.objects.filter(resource=resource.id, url=url)
+            if len(actions) > 0:
+                raise serializers.ValidationError("Action with this url already exists.")
+                
+        return data
 
 class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,6 +41,10 @@ class ResourceSerializer(serializers.ModelSerializer):
     def validate_url(self, value):
         if value[0] != '/':
             raise serializers.ValidationError("URL must start with '/', ex) '/users'")
+
+        when_slash_more_than_one = len(value.split('/')) > 2
+        if when_slash_more_than_one:
+            raise serializers.ValidationError("Resource url must have just one slash at the beginning of it.")
 
         return value;
 

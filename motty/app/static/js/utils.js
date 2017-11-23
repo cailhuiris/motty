@@ -11,6 +11,7 @@ function select_value(selector, value){
 }
 
 function toast(message){
+    $('.toast').remove();
     $("header").after('<div class="toast container fixed">'+
         '<div class="columns">'+
             '<div class="column col-9 col-mx-auto">'+
