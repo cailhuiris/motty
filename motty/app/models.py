@@ -3,8 +3,8 @@ from django.db import models
 
 class Resource(models.Model):
     '''Resource manages actions.'''
-    name = models.CharField(max_length=30)
-    url = models.CharField(max_length=50)
+    name = models.CharField(unique=True, max_length=30)
+    url = models.CharField(unique=True, max_length=50)
 
     def __str__(self):
         return "name: {0}, url: {1}".format(self.name, self.url)

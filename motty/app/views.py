@@ -120,6 +120,7 @@ def save_resource(request):
 def return_fake_request(request, endpoint):
     return HttpResponse('Under construction.')
 
+# utils
 def get_editor_type(content_type):
     json_editors = ['application/json', 'application/javascript']
     xml_editors = ['text/xml', 'application/xml']

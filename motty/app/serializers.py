@@ -9,15 +9,23 @@ class ActionSerializer(serializers.ModelSerializer):
         model = Action
         fields = ('id', 'resource', 'name', 'url', 'method', 'contentType', 'body', 'created_at')
 
-    # def create(self, validated_data):
-    #     validated_data['url'] = remove_last_slash(validated_data['url'])
-    #     return Action.objects.create(**validated_data)
+    def validate_url(self, value):
+        if value[0] != '/':
+            raise serializers.ValidationError("URL must star with '/', ex) '/all'")
+        
+        return value
 
 class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource
         fields = ('id', 'name', 'url', 'actions')
         read_only_fields = ('actions', )
+
+    def validate_url(self, value):
+        if value[0] != '/':
+            raise serializers.ValidationError("URL must start with '/', ex) '/users'")
+
+        return value;
 
     def get_validation_exclusions(self):
         exclusions = super(FavoriteListSerializer, self).get_validation_exclusions()
