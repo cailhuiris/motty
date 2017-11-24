@@ -48,7 +48,11 @@ def save_action(request, resource_id, action_id=None):
             messages.info(request, "The '{0}' action is successfully saved.".format(body.get('name')))
             return redirect('index_view')
         else:
-            return render(request, 'app/action/form.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
+            action_id = body.get('id')
+            if action_id is None:
+                return render(request, 'app/action/form.html', { 'resource': resource, 'errors': serializer.errors, 'form': body })
+            else:
+                return render(request, 'app/action/form.html', { 'resource': resource, 'action': action, 'errors': serializer.errors, 'form': body })
 
 def action_view(request, id):
     action = Action.objects.get(pk=id)

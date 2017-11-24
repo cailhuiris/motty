@@ -16,7 +16,13 @@
 {% endblock %}
 
 {% block content %}
-<form id="action-edit-form" action="{% url 'create_action' resource.id %}" method="post">
+<form id="action-edit-form" 
+    {% if action %}
+        action="{% url 'edit_action' resource.id action.id %}" 
+    {% else %}
+        action="{% url 'create_action' resource.id %}" 
+    {% endif %}
+    method="post">
 <div class="columns" ng-controller="EditActionForm.ctrl">
     {% csrf_token %}
     <input type="hidden" name="resource" value="{{ resource.id }}">

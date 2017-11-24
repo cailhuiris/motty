@@ -25,11 +25,11 @@ class ActionSerializer(serializers.ModelSerializer):
         else:
             if resource.url != '/' and url[0] != '/':
                 raise serializers.ValidationError("Action url must start with '/', ex) '/all', '/1/product'")
-            
-            actions = Action.objects.filter(resource=resource.id, url=url)
-            if len(actions) > 0:
-                raise serializers.ValidationError("Action with this url already exists.")
-                
+
+        actions = Action.objects.filter(resource=resource.id, url=url)
+        if len(actions) > 0:
+            raise serializers.ValidationError("Action with this url already exists.")
+
         return data
 
 class ResourceSerializer(serializers.ModelSerializer):
