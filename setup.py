@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
   name = 'motty',
   packages = ['motty'],
-  version = '0.3',
+  version = '1.0',
   description = 'utils for http mocking',
   author = 'David Lee',
   author_email = 'scalalang2@gmail.com',

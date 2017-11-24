@@ -1,8 +1,10 @@
-from .models import Action, Resource
-from .utils import remove_last_slash
+from django.db.models import Q
 from rest_framework import serializers
 
 import datetime
+
+from .models import Action, Resource
+from .utils import remove_last_slash
 
 class ActionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +12,7 @@ class ActionSerializer(serializers.ModelSerializer):
         fields = ('id', 'resource', 'name', 'url', 'method', 'contentType', 'body', 'created_at')
 
     def validate(self, data):
+        action_id = data.get('id')
         resource = data['resource']
         url = data['url']
         
@@ -26,9 +29,10 @@ class ActionSerializer(serializers.ModelSerializer):
             if resource.url != '/' and url[0] != '/':
                 raise serializers.ValidationError("Action url must start with '/', ex) '/all', '/1/product'")
 
-        actions = Action.objects.filter(resource=resource.id, url=url)
-        if len(actions) > 0:
-            raise serializers.ValidationError("Action with this url already exists.")
+        if action_id is not None:
+            actions = Action.objects.filter(~Q(id=action_id), resource=resource.id, url=url)
+            if len(actions) > 0:
+                raise serializers.ValidationError("Action with this url already exists.")
 
         return data
 

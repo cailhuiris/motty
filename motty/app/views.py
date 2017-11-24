@@ -122,7 +122,32 @@ def save_resource(request):
 # fake responses.
 @csrf_exempt
 def return_fake_request(request, endpoint):
-    return HttpResponse('Under construction.')
+    import re;
+
+    method = request.method
+    endpoint = '/' + endpoint
+    result = re.match("^(?P<resource>\/[a-z0-9A-Z-_]+)(?P<action>\/[a-z0-9A-Z-_/]+)?", endpoint)
+
+    resource_url = result.group('resource')
+    action_url = result.group('action')
+
+    if action_url is None:
+        root_action = resource_url[1:]
+        root_resource = Resource.objects.filter(url='/')[0]
+        query = Action.objects.filter(resource=root_resource.id, url=root_action, method=method)
+        if len(query) > 0:
+            action = query[0]
+            return HttpResponse(action.body, content_type=action.contentType)
+    else:
+        r_query = Resource.objects.filter(url=resource_url)
+        if len(r_query) > 0:
+            resource = r_query[0]
+            query = Action.objects.filter(resource=resource.id, url=action_url, method=method)
+            if len(query) > 0:
+                action = query[0]
+                return HttpResponse(action.body, content_type=action.contentType)
+
+    return HttpResponse("Oops. There is no such action.", status=404)
 
 # utils
 def get_editor_type(content_type):

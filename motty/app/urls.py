@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^motty/api/resource/([0-9]{1,})/delete', views.delete_resource, name="api_delete_resource"),
 
     # producing resource api
-    url(r'^motty/base/(.+)', views.return_fake_request, name = "return_fake_request"),
-
+    url(r'(.+)', views.return_fake_request, name = "return_fake_request"),
     url(r'', views.main, name = "main"),
 ]
