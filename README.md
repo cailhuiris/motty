@@ -4,8 +4,7 @@ Motty helps you to generate custom http responses.
 It's very helpful to test your client services such as android, ios app, web and so on.<br>
 Even though the server is not ready to link your services. You can keep your plan and continue to develop.
 
-![View information](../master/motty/app/static/images/github/detail.png)
-
+[Check more about motty!](https://scalalang2.github.io/motty/)
 
 ## Installation
 You can easily install and run motty server by a few of commands. <br>
