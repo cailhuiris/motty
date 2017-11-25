@@ -183,6 +183,11 @@ footer {
 
     .type-response-area {
         margin-top: 20px;
+        &.has-error {
+            #response {
+                border-color: #e85600;
+            }
+        }
         .response-label {
             display:block;
             padding: 5px 0;

@@ -90,6 +90,8 @@ footer .container #whoiam a img { width: 20px; height: 16px; }
 
 #action-edit-form .type-response-area { margin-top: 20px; }
 
+#action-edit-form .type-response-area.has-error #response { border-color: #e85600; }
+
 #action-edit-form .type-response-area .response-label { display: block; padding: 5px 0; }
 
 #action-edit-form .type-response-area #response { border: 1px solid #caced7; }
