@@ -2,8 +2,12 @@
   <img src="https://scalalang2.github.io/motty/images/logo.png" width="75" height="75">
 </a>
 
-# Motty
-Motty helps you to generate custom http responses.
+## Motty
+Motty is simpler and better way to build mocking http server.
+
+- No codes needed.
+- Easy installation.
+- Responsive.
 
 It's very helpful to test your client services such as android, ios app, web and so on.<br>
 Even though the server is not ready to link your services. You can keep your plan and continue to develop.
