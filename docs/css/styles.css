@@ -64,6 +64,22 @@ header #main-navigation .btn-lg.make-gap {
 }
 
 /* body */
+#body #motty-view {
+    padding: 100px 0;
+    text-align: center;
+}
+
+#body #motty-view h2 {
+    display: inline-block;
+    color: #6A7385;
+    font-size: 26px;
+}
+
+#body #motty-view img {
+    margin-top: 20px;
+    width: 100%;
+}
+
 #body #installation {
     padding: 20px 0 10px 0;
     border-bottom: 1px solid #ECEEF0;
