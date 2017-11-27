@@ -1,4 +1,8 @@
-# Motty, Mock your HTTP!
+<a href="https://scalalang2.github.io/motty/">
+  <img src="https://scalalang2.github.io/motty/images/logo.png" width="75" height="75">
+</a>
+
+# Motty
 Motty helps you to generate custom http responses.
 
 It's very helpful to test your client services such as android, ios app, web and so on.<br>
