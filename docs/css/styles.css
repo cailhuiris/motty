@@ -65,6 +65,7 @@ header #main-navigation .btn-lg.make-gap {
 
 /* body */
 #body #motty-view {
+    position: relative;
     padding: 100px 0;
     text-align: center;
 }
@@ -137,4 +138,41 @@ footer a:hover {
     header #about-motty h3 {
         line-height: 2.0;
     }
+}
+
+/* slides */
+#slides {
+    
+}
+
+#slides img:first-child {
+    height: auto or 100%;
+}
+
+#slides .slidesjs-navigation {
+    display: none;
+}
+
+#slides .slidesjs-pagination {
+    left: calc(50% - 70px);
+    position: absolute;
+}
+
+#slides .slidesjs-pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+#slides .slidesjs-pagination li a {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url(../images/bullet_none.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-indent: -99999px;
+}
+
+#slides .slidesjs-pagination li a.active, .slidesjs-pagination li a:hover.active {
+    background-image: url(../images/bullet_selected.png);
 }
