@@ -6,7 +6,7 @@
 Motty is simpler and better way to build mocking http server. 
 
 - Why do we need an another code for mocking http server?
- - Motty doesn't need codes.
+    - Motty doesn't need codes.
 - Easy to use.
 - Simple Installation.
 
