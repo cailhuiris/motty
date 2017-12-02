@@ -3,7 +3,7 @@
 </a>
 
 ## Motty
-Motty is simpler and better way to build mocking http server. 
+Motty is very simple web application tool. It provides you simpler way to build mocking http server. 
 
 - Why do we need an another code for mocking http server?
     - Motty doesn't need codes.
