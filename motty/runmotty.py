@@ -37,7 +37,7 @@ def print_help_messages():
 Usage : runmotty <command>
 
 1. runmotty                    run powerful motty server!
-2g. runmotty --port <number>    run motty server on <number> port.
+2. runmotty --port <number>    run motty server on <number> port.
 """)
 
 def evaluate_arguments(argv):
