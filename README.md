@@ -3,7 +3,7 @@
 </a>
 
 ## Motty
-Motty is very simple web application tool. It provides you simpler way to build mocking http server. 
+Motty provides you simpler way to build mocking http server. It is very simple web application tool
 
 ![Motty web application](/docs/images/main.png)
 
