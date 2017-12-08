@@ -10,7 +10,7 @@ setup(
   include_package_data = True,
   scripts=['motty/runmotty.py'],
   entry_points={'console_scripts': [
-    'run-motty = runmotty:run_motty',
+    'runmotty = runmotty:run_motty',
   ]},
   install_requires=['django', 'djangorestframework', 'django-libsass', 'libsass', 'django-compressor',
     'django-sass-processor', 'tornado'],
