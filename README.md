@@ -3,11 +3,12 @@
 </a>
 
 ## Motty
-Motty is simpler and better way to build mocking http server.
+Motty is very simple web application tool. It provides you simpler way to build mocking http server. 
 
-- No codes needed.
-- Easy installation.
-- Responsive.
+- Why do we need an another code for mocking http server?
+    - Motty doesn't need codes.
+- Easy to use.
+- Simple Installation.
 
 It's very helpful to test your client services such as android, ios app, web and so on.<br>
 Even though the server is not ready to link your services. You can keep your plan and continue to develop.
