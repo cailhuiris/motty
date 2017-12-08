@@ -79,12 +79,12 @@ def evaluate_arguments(argv):
             argument['value'] = value
             is_value = True
 
-def run_motty(argv):
+def run_motty():
     STATIC_ROOT = projectpath + '/app/static'
     os.environ['DJANGO_SETTINGS_MODULE'] = 'motty.settings'
 
     try:
-        evaluate_arguments(argv)
+        evaluate_arguments(sys.argv[1:])
         # help check.
         if ARGUMENT_SET['-h']['given'] :
             print_help_messages();
@@ -113,5 +113,3 @@ def run_motty(argv):
         print("'{0}' option's value should be provided.\nYou should enter command like this '$ runmotty {1} [value]'".format(e.arg, e.arg))
     except Exception as e:
         print("Unknown error occured.", e)
-
-run_motty(sys.argv[1:]);
