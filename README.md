@@ -37,8 +37,12 @@ Afterward, if we can solve this issue, We'll keep you updated <br>
 
 
 #### 3. Run it! and play fun.
-> $ run-motty
+> $ runmotty
 
+
+## Options
+#### Run server on specific port.
+> $ runmotty --port 7000
 
 ## License
 
