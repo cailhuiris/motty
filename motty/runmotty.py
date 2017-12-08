@@ -14,10 +14,10 @@ ARGUMENT_SET = {
 }
 
 # in production.
-# projectpath = [path for path in sys.path if 'site-packages' in path][0] + "/motty"
+projectpath = [path for path in sys.path if 'site-packages' in path][0] + "/motty"
 
 # in development.
-projectpath = os.path.dirname(os.path.abspath(__file__))
+# projectpath = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(projectpath)
 
 class InvalidOptionError(RuntimeError):
