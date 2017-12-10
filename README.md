@@ -28,7 +28,7 @@ Python>=3.0 is required, so you should install python 3 before proceeding next s
 **You must not jump up this step** <br>
 We have an issue related to permissions. Therefore at this time you must do this.<br>
 If we find the solution to handle this. I'll fix it<br><br>
-if you know what the problem is, Please let me know or contribute your own.<br>
+if you know why the permission issue occurs, Please let me know or contribute your own.<br>
 I always welcome your contribution! :-)
 
 > $ pip3 install virtualenv <br>
