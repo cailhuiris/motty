@@ -5,7 +5,7 @@
 ## Motty
 Motty provides the simpler way to test your client services.<br>
 It is an web application which gives you abaility to create your own custom responses.<br>
-So you can very easily to mock http responses. All you need to do is typing and click!
+So you can intuitively and easily to mock http responses. All you need to do is typing and click!
 
 ![Motty web application](/docs/images/main.png)
 
@@ -26,10 +26,10 @@ Python>=3.0 is required, so you should install python 3 before proceeding next s
 
 #### 1. Set up an isolated environment.
 **You must not jump up this step** <br>
-cause motty have permission issues, <br>
-so it cannot access system library folders like /usr/bin. <br><br>
-This is why motty have to be installed inside home directory. <br>
-Afterward, if we can solve this issue, We'll keep you updated <br>
+We have an issue related to permissions. Therefore at this time you must do this.<br>
+If we find the solution to handle this. I'll fix it<br><br>
+if you know what the problem is, Please let me know or contribute your own.<br>
+I always welcome your contribution! :-)
 
 > $ pip3 install virtualenv <br>
 > $ mkdir ~/mottyenv <br>
