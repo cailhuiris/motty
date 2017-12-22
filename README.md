@@ -5,7 +5,7 @@
 ## Motty
 Motty provides the simpler way to test your client services.<br>
 It is an web application which gives you abaility to create your own custom responses.<br>
-So you can intuitively and easily to mock http responses. All you need to do is typing and click!
+So you can intuitively and easily mock http responses. All you need to do is typing and click!
 
 ![Motty web application](/docs/images/main.png)
 
